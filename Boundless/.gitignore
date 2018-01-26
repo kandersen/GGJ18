@@ -23,6 +23,9 @@ ExportedObj/
 *.svd
 *.pdb
 
+# Rider
+/.idea/
+
 # Unity3D generated meta files
 *.pidb.meta
 
@@ -35,5 +38,3 @@ sysinfo.txt
 
 Boundless/Library/
 Boundless/Temp/
-
-.DS_Store
