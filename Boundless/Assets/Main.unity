@@ -347,6 +347,7 @@ MonoBehaviour:
   GameplayController: {fileID: 1319643305}
   DriftBehaviour: {fileID: 351599333}
   State: 0
+  Velocity: 2
 --- !u!1 &616734014
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,10 +467,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 666267081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfcbe4b93478b491cb370b90555fe959, type: 3}
+  m_Script: {fileID: 11500000, guid: 7317f42ed38874025a17a9c17af69dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameplayController: {fileID: 1319643305}
 --- !u!61 &666267084
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -751,6 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1319643306}
   - component: {fileID: 1319643305}
+  - component: {fileID: 1319643307}
   m_Layer: 0
   m_Name: GameplayController
   m_TagString: Untagged
@@ -769,9 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916e31d16fb1746e088fdae965c7598d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Alien: {fileID: 1166828374}
-  Background: {fileID: 1945645935}
-  AlienStartPosition: {fileID: 54371031}
+  GameStateMachine: {fileID: 1319643307}
 --- !u!4 &1319643306
 Transform:
   m_ObjectHideFlags: 0
@@ -785,6 +784,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1319643307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1319643304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2325d85aaa5b4034b30074a8239fae5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alien: {fileID: 1166828374}
+  BackgroundBehaviour: {fileID: 1945645935}
+  AlienStartPosition: {fileID: 54371031}
 --- !u!1 &1332028973
 GameObject:
   m_ObjectHideFlags: 0

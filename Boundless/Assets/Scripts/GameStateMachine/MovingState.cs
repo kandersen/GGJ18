@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MovingState : GameState
 {
     private readonly Vector3 _target;
-    private float _speed;
-    private Vector3 _direction;
+    private Coroutine _coroutine;
 
     public MovingState(Vector2 pos, GameStateMachine gameStateMachine) :
         base(gameStateMachine)
@@ -14,23 +14,25 @@ public class MovingState : GameState
 
     public override void UpdateState()
     {
-        var delta = _target - _gameStateMachine.Alien.transform.position;
-        if (delta.magnitude > 0.05f)
-        {
-            _gameStateMachine.Alien.transform.Translate(_direction * Time.deltaTime * _speed);
-        }
-        else
-        {
-            _nextState = new FreeFallingState(_gameStateMachine);
-        }
-        
     }
 
     public override void EnterState()
     {
+        _coroutine = _gameStateMachine.StartCoroutine(MoveRoutine());
+    }
+
+    private IEnumerator MoveRoutine()
+    {
         var delta = _target - _gameStateMachine.Alien.transform.position;
-        _speed = delta.y > 0 ? 2.0f : 4.0f;
-        _direction = delta.normalized;
+        var speed = delta.y > 0 ? 4.0f : 8.0f;
+        while (delta.magnitude > 0.1f)
+        {
+            _gameStateMachine.Alien.transform.Translate(delta.normalized * Time.deltaTime * speed);
+            Debug.DrawLine(_gameStateMachine.Alien.transform.position, _target, Color.green);
+            yield return null;
+            delta = _target - _gameStateMachine.Alien.transform.position;
+        }
+        _nextState = new FreeFallingState(_gameStateMachine);
     }
 
     public override void ExitState()
@@ -39,11 +41,13 @@ public class MovingState : GameState
 
     public override void AlienReachedBottom()
     {
+        _gameStateMachine.StopCoroutine(_coroutine);
         _nextState = new TransitionToNextStageState(_gameStateMachine);
     }
 
     public override void ItemClicked(ItemBehaviour item)
     {
+        _gameStateMachine.StopCoroutine(_coroutine);
         _nextState = new ChaseAndGetItemState(item, _gameStateMachine);
     }
 
@@ -53,11 +57,13 @@ public class MovingState : GameState
 
     public override void BottomScreenPressed()
     {
+        _gameStateMachine.StopCoroutine(_coroutine);
         _nextState = new TransitionToNextStageState(_gameStateMachine); 
     }
 
     public override void PositionInSpacePressed(Vector2 pos)
     {
+        _gameStateMachine.StopCoroutine(_coroutine);
         _nextState = new MovingState(pos, _gameStateMachine);
     }
 }

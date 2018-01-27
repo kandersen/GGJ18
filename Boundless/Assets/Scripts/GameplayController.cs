@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameplayController : MonoBehaviour
 {
@@ -8,10 +6,6 @@ public class GameplayController : MonoBehaviour
     public Signal<ItemBehaviour> PickItemSignal = new Signal<ItemBehaviour>();
     public Signal<Vector2> MoveSignal = new Signal<Vector2>();
     public Signal<ItemBehaviour> ItemDriftedOffScreenSignal = new Signal<ItemBehaviour>();
-
-    public AlienBehaviour Alien;
-    public BackgroundBehaviour Background;
-    public Transform AlienStartPosition;
 
     public GameStateMachine GameStateMachine; 
     
@@ -28,9 +22,9 @@ public class GameplayController : MonoBehaviour
         ItemDriftedOffScreenSignal.AddListener(HandleItemDriftedOffScreen);
     }
 
-    private void HandleItemDriftedOffScreen(ItemBehaviour obj)
+    private void HandleItemDriftedOffScreen(ItemBehaviour item)
     {
-        
+        GameStateMachine._state.ItemDriftedOff(item);
     }
 
     private void HandleMove(Vector2 destination)

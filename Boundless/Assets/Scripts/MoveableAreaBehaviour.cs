@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class MoveableAreaBehaviour : MonoBehaviour
 {
 	public GameplayController GameplayController;
+	public Collider2D collider;
+
+	public void Update()
+	{
+	}
 	
 	public void OnMouseUpAsButton()
 	{

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class GameState
 {
@@ -12,6 +11,7 @@ public abstract class GameState
 
     protected GameState(GameStateMachine gameStateMachine)
     {
+        _nextState = null;
         _gameStateMachine = gameStateMachine;
     }
 
