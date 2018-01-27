@@ -17,6 +17,11 @@ public class Signal
             listener.Invoke();   
         }
     }
+
+    public void RemoveListener(Action listener)
+    {
+        _listeners.Remove(listener);
+    }
 }
 
 public class Signal<T>
