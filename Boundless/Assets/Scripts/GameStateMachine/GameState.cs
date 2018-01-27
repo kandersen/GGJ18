@@ -7,7 +7,7 @@ public abstract class GameState
     public abstract void ExitState();
 
     protected GameStateMachine _gameStateMachine;
-    protected GameState _nextState;
+    protected GameState _nextState;    
 
     protected GameState(GameStateMachine gameStateMachine)
     {
@@ -25,4 +25,5 @@ public abstract class GameState
     public abstract void ItemDriftedOff(ItemBehaviour item);
     public abstract void BottomScreenPressed();
     public abstract void PositionInSpacePressed(Vector2 pos);
+    public abstract void AstronautActivated();
 }

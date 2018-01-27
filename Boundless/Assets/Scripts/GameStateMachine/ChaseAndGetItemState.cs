@@ -79,4 +79,9 @@ public class ChaseAndGetItemState : GameState
         _gameStateMachine.StopCoroutine(_coroutine);
         _nextState = new MovingState(pos, _gameStateMachine);    
     }
+
+    public override void AstronautActivated()
+    {
+        _gameStateMachine.Astronaut.Activate();
+    }
 }

@@ -20,6 +20,8 @@ public class UfoBehaviour : MonoBehaviour {
 
 	public ColliderEventReporter cer;
 
+	public AudioSource AudioSource;
+	public AudioClip ExplosionClip;
 
 	private Coroutine scene = null;
 
@@ -29,12 +31,6 @@ public class UfoBehaviour : MonoBehaviour {
 		cer.OnTriggerSignal.AddListener (HandleTrigger);
 		ufoWhiteRenderer.color = new Color (1, 1, 1, 0);
 		blackRenderer.material.color = new Color (0, 0, 0, 0);
-		//Debug.Log ("Color: " + ufoRenderer.color);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	void OnMouseUpAsButton () {
@@ -49,8 +45,12 @@ public class UfoBehaviour : MonoBehaviour {
 		yield return DOTween.ToAlpha (() => boundlessRenderer.color, x => boundlessRenderer.color = x,0,2f);
 
 		yield return new WaitForSeconds (1);
+
+		DOTween.To(() => AudioSource.volume, v => AudioSource.volume = v, 0f, 2.8f);
 		
 		yield return DOTween.ToAlpha (() => ufoWhiteRenderer.color, x => ufoWhiteRenderer.color = x, 1, 2.8f).SetEase(Ease.InQuart).WaitForCompletion();
+
+		AudioSource.Stop();
 
 		yield return new WaitForSeconds (0.2f);
 
@@ -58,7 +58,9 @@ public class UfoBehaviour : MonoBehaviour {
 		ufoWhiteRenderer.enabled = false;
 		boomRenderer.gameObject.transform.position = ufoWhiteRenderer.gameObject.transform.position;
 		boomRenderer.enabled = true;
-		//boomRenderer.transform.DOPunchScale (Vector3.one * 0.45f,0.6f);
+
+		AudioSource.volume = 1.0f;
+		AudioSource.PlayOneShot(ExplosionClip);
 
 		yield return DOTween.To (() => background.speed, x => background.speed = x, 0, 0.5f).WaitForCompletion();
 
