@@ -9,6 +9,7 @@ public class GameStateMachine : MonoBehaviour
     public BackgroundBehaviour BackgroundBehaviour;
     public Transform AstronautStartPosition;
     public GameplayController GameplayController;
+    public MeshRenderer Fade;
 
     public List<Transform> SpawnPoints;
     
@@ -47,6 +48,7 @@ public class GameplayIntroState : GameState
 
     public override void EnterState()
     {
+        _gameStateMachine.Fade.material.color = Color.black;
         _gameStateMachine.BackgroundBehaviour.speed = 10f;
         _gameStateMachine.Astronaut.transform.position = Vector3.up * 10;
         _gameStateMachine.StartCoroutine(EnterAstronautRoutine());
@@ -58,6 +60,8 @@ public class GameplayIntroState : GameState
         yield return new WaitForSeconds(2.0f);
         DOTween.To(() => _gameStateMachine.BackgroundBehaviour.speed,
             x => _gameStateMachine.BackgroundBehaviour.speed = x, 0.2f, 3.0f).SetEase(Ease.OutCirc);
+        DOTween.ToAlpha(() => _gameStateMachine.Fade.material.color, c => _gameStateMachine.Fade.material.color = c,
+            0.0f, 0.5f);
         yield return naut.DOMove(_gameStateMachine.AstronautStartPosition.position, 3.0f).SetEase(Ease.OutElastic).WaitForCompletion();
         _nextState = new FreeFallingState(_gameStateMachine);
     }

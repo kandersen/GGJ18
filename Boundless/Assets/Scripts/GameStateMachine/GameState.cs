@@ -7,7 +7,7 @@ public abstract class GameState
     public abstract void ExitState();
 
     protected GameStateMachine _gameStateMachine;
-    protected GameState _nextState;
+    protected GameState _nextState;    
 
     protected GameState(GameStateMachine gameStateMachine)
     {
