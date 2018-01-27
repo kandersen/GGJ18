@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UfoBehaviour : MonoBehaviour {
 
+	public GameObject boom;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -12,5 +14,10 @@ public class UfoBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void OnMouseUpAsButton () {
+		Debug.Log("Yes, on mouse up as button works.");
+
 	}
 }
