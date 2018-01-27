@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class AstronautBehaviour : MonoBehaviour
@@ -8,10 +9,23 @@ public class AstronautBehaviour : MonoBehaviour
 	public float UpSpeed = 2f;
 	public float DownSpeed = 4f;
 
+	public GameplayController GameplayController;
+	public ColliderEventReporter ColliderEventReporter;
+	
 	public Stack<ItemBehaviour> Items = new Stack<ItemBehaviour>();
 	
 	public Transform LeftHand;
 	public Transform RightHand;
+
+	public void Start()
+	{
+		ColliderEventReporter.OnClickedSignal.AddListener(HandleOnClick);
+	}
+
+	private void HandleOnClick()
+	{
+		GameplayController.ActivateAstronautSignal.Dispatch();
+	}
 
 	public ItemBehaviour PickUpItem(ItemBehaviour item)
 	{
@@ -55,5 +69,10 @@ public class AstronautBehaviour : MonoBehaviour
 		Vector2 position = transform.position;
 		position += Vector2.down * Time.deltaTime * _velocity;
 		transform.position = position;
+	}
+
+	public void Activate()
+	{
+		throw new System.NotImplementedException();
 	}
 }

@@ -73,4 +73,8 @@ public class TransitionToNextStageState : GameState
     public override void PositionInSpacePressed(Vector2 pos)
     {
     }
+
+    public override void AstronautActivated()
+    {
+    }
 }

@@ -6,9 +6,10 @@ public class GameplayController : MonoBehaviour
     public Signal<ItemBehaviour> PickItemSignal = new Signal<ItemBehaviour>();
     public Signal<Vector2> MoveSignal = new Signal<Vector2>();
     public Signal<ItemBehaviour> ItemDriftedOffScreenSignal = new Signal<ItemBehaviour>();
+    public Signal ActivateAstronautSignal = new Signal();
 
-    public GameStateMachine GameStateMachine; 
-    
+    public GameStateMachine GameStateMachine;
+
     public void Start()
     {
         ConnectSignals();
@@ -20,6 +21,12 @@ public class GameplayController : MonoBehaviour
         PickItemSignal.AddListener(HandlePickItem);
         MoveSignal.AddListener(HandleMove);
         ItemDriftedOffScreenSignal.AddListener(HandleItemDriftedOffScreen);
+        ActivateAstronautSignal.AddListener(HandleActivateAstronaut);
+    }
+
+    private void HandleActivateAstronaut()
+    {
+        GameStateMachine.State.AstronautActivated();
     }
 
     private void HandleItemDriftedOffScreen(ItemBehaviour item)
@@ -41,4 +48,6 @@ public class GameplayController : MonoBehaviour
     {
         GameStateMachine.State.BottomScreenPressed();
     }
+    
+    
 }

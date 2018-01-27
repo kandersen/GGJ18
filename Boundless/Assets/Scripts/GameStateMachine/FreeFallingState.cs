@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -57,4 +56,8 @@ public class FreeFallingState : GameState
         _nextState = new MovingState(pos, _gameStateMachine);
     }
 
+    public override void AstronautActivated()
+    {
+        _gameStateMachine.Astronaut.Activate();
+    }
 }
