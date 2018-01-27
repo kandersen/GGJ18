@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameplayController : MonoBehaviour
 {
     public Signal MoveDownwardsSignal = new Signal();
+    public Signal<ItemBehaviour> PickItemSignal = new Signal<ItemBehaviour>();
 
-    private Coroutine _activeCommand;
+    private Coroutine _activeRoutine;
 
     public AlienBehaviour Alien;
     public BackgroundBehaviour Background;
@@ -20,13 +21,20 @@ public class GameplayController : MonoBehaviour
     public void ConnectSignals()
     {
         MoveDownwardsSignal.AddListener(HandleMoveDown);
+        MoveDownwardsSignal.AddListener(HandlePickItem);
     }
-    
+
+    private void HandlePickItem()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void HandleMoveDown()
     {
-        if (_activeCommand == null)
+        if (_activeRoutine != null)
         {
-            _activeCommand = StartCoroutine(TransitionRoutine());            
+            StopCoroutine(_activeRoutine);
+            _activeRoutine = null;
         }
     }
     
@@ -37,7 +45,7 @@ public class GameplayController : MonoBehaviour
         yield return Alien.transform.DOMove(AlienStartPosition.position, 3.0f).WaitForCompletion();
         DOTween.To(()=> Background.speed, x=> Background.speed = x, 0.2f, 0.5f);
         Alien.InFreeFall = true;
-        _activeCommand = null;
+        _activeRoutine = null;
     }
 
 

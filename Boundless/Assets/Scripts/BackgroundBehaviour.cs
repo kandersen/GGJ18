@@ -13,7 +13,6 @@ public class BackgroundBehaviour : MonoBehaviour {
 		background1.transform.position = new Vector2 (0,7);
 		Sprite spr1 = (background1.GetComponent<SpriteRenderer> ()).sprite;
 		height = spr1.bounds.max.y;
-		Debug.Log (height);
 		background2.transform.position = new Vector2 (0, 7 - height);
 	}
 	
