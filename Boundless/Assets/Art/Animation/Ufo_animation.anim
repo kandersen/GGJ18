@@ -19,25 +19,19 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: -0.0044555664, y: 0.2, z: -5}
+        value: {x: 0, y: 0.2, z: -5}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.016666668
-        value: {x: -0.0044555664, y: 0.19985296, z: -5}
-        inSlope: {x: 0, y: -0.017580247, z: 0}
-        outSlope: {x: 0, y: -0.017580247, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
         time: 1.5
-        value: {x: -0.0044555664, y: -0.2, z: -5}
+        value: {x: 0, y: -0.2, z: -5}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 3
-        value: {x: -0.0044555664, y: 0.2, z: -5}
+        value: {x: 0, y: 0.2, z: -5}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -88,8 +82,8 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0.016666668
-        value: -0.0044555664
+        time: 0
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -148,11 +142,4 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events:
-  - time: 2.691803
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
