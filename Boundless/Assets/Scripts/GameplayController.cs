@@ -24,21 +24,21 @@ public class GameplayController : MonoBehaviour
 
     private void HandleItemDriftedOffScreen(ItemBehaviour item)
     {
-        GameStateMachine._state.ItemDriftedOff(item);
+        GameStateMachine.State.ItemDriftedOff(item);
     }
 
     private void HandleMove(Vector2 destination)
     {
-        GameStateMachine._state.PositionInSpacePressed(destination);
+        GameStateMachine.State.PositionInSpacePressed(destination);
     }
 
     private void HandlePickItem(ItemBehaviour item)
     {
-        GameStateMachine._state.ItemClicked(item);
+        GameStateMachine.State.ItemClicked(item);
     }
 
     private void HandleMoveDown()
     {
-        GameStateMachine._state.BottomScreenPressed();
+        GameStateMachine.State.BottomScreenPressed();
     }
 }

@@ -31,7 +31,7 @@ public class ItemBehaviour : MonoBehaviour
 
     public void Update()
     {
-        if (State != ItemState.Drifting) return;
+        if (State == ItemState.Held) return;
         
         Vector2 position = transform.position;
         position += Vector2.up * Time.deltaTime * Velocity;

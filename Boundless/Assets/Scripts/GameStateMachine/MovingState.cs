@@ -23,14 +23,14 @@ public class MovingState : GameState
 
     private IEnumerator MoveRoutine()
     {
-        var delta = _target - _gameStateMachine.Alien.transform.position;
+        var delta = _target - _gameStateMachine.Astronaut.transform.position;
         var speed = delta.y > 0 ? 4.0f : 8.0f;
         while (delta.magnitude > 0.1f)
         {
-            _gameStateMachine.Alien.transform.Translate(delta.normalized * Time.deltaTime * speed);
-            Debug.DrawLine(_gameStateMachine.Alien.transform.position, _target, Color.green);
+            _gameStateMachine.Astronaut.transform.Translate(delta.normalized * Time.deltaTime * speed);
+            Debug.DrawLine(_gameStateMachine.Astronaut.transform.position, _target, Color.green);
             yield return null;
-            delta = _target - _gameStateMachine.Alien.transform.position;
+            delta = _target - _gameStateMachine.Astronaut.transform.position;
         }
         _nextState = new FreeFallingState(_gameStateMachine);
     }

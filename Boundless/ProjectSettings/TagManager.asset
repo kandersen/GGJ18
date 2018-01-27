@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Naut
+  - Item
   layers:
   - Default
   - TransparentFX
