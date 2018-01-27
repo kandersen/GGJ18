@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
+using UnityEngine;
 
 public class FreeFallingState : GameState
 {        
@@ -14,12 +17,19 @@ public class FreeFallingState : GameState
 
     public override void EnterState()
     {
-        _gameStateMachine.Alien.InFreeFall = true;
+        _gameStateMachine.StartCoroutine(ReleaseRoutine());
+        _gameStateMachine.Astronaut.InFreeFall = true;
+    }
+
+    private IEnumerator ReleaseRoutine()
+    {
+        yield return _gameStateMachine.Astronaut.transform.DOPunchPosition(Vector3.up * 0.1f, 0.4f, elasticity:0f).SetEase(Ease.OutSine).WaitForCompletion();
+        _gameStateMachine.Astronaut.InFreeFall = true;
     }
 
     public override void ExitState()
     {
-        _gameStateMachine.Alien.InFreeFall = false;
+        _gameStateMachine.Astronaut.InFreeFall = false;
     }
 
     public override void AlienReachedBottom()

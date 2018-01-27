@@ -19,13 +19,34 @@ public class TransitionToNextStageState : GameState
 
     private IEnumerator TransitionRoutine()
     {
-        var alien = _gameStateMachine.Alien;
+        var alien = _gameStateMachine.Astronaut;
         var background = _gameStateMachine.BackgroundBehaviour;
         alien.InFreeFall = false;
-        DOTween.To(()=> background.speed, x=> background.speed = x, 2.0f, 0.5f);
-        yield return alien.transform.DOMove(_gameStateMachine.AlienStartPosition.position, 3.0f).WaitForCompletion();
+        
+        DOTween.To(() => background.speed, x => background.speed = x, 2.0f, 0.5f);
+        foreach (var item in _gameStateMachine.ActiveItems)
+        {
+            item.Velocity = 8.0f;
+        }        
+        yield return alien.transform.DOMove(_gameStateMachine.AstronautStartPosition.position, 3.0f).WaitForCompletion();
         DOTween.To(()=> background.speed, x=> background.speed = x, 0.2f, 0.5f);
+        
         alien.InFreeFall = true;
+
+        foreach (var item in _gameStateMachine.ActiveItems)
+        {
+            item.gameObject.SetActive( false );
+        }
+        _gameStateMachine.ActiveItems.Clear();
+            
+        foreach (var spawnpoint in _gameStateMachine.SpawnPoints)
+        {
+            var item = GameObject.Instantiate(_gameStateMachine.BatteryPrefab);
+            item.GameplayController = _gameStateMachine.GameplayController;
+            item.transform.position = spawnpoint.position;
+            _gameStateMachine.ActiveItems.Add(item);
+        }
+        
         _nextState = new FreeFallingState(_gameStateMachine);
     }
 

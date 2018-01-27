@@ -23,18 +23,20 @@ public class ChaseAndGetItemState : GameState
 
     private IEnumerator ChaseRoutine()
     {
-        var delta = _target.transform.position - _gameStateMachine.Alien.transform.position;
+        var delta = _target.transform.position - _gameStateMachine.Astronaut.transform.position;
         while (delta.magnitude > 0.05f)
         {
-            _gameStateMachine.Alien.transform.Translate(delta.normalized * Time.deltaTime * 6.0f);
-            Debug.DrawLine(_gameStateMachine.Alien.transform.position, _target.transform.position, Color.cyan);
+            _gameStateMachine.Astronaut.transform.Translate(delta.normalized * Time.deltaTime * 6.0f);
+            Debug.DrawLine(_gameStateMachine.Astronaut.transform.position, _target.transform.position, Color.cyan);
             yield return null;
-            delta = _target.transform.position - _gameStateMachine.Alien.transform.position;
+            delta = _target.transform.position - _gameStateMachine.Astronaut.transform.position;
         }      
-        _gameStateMachine.Alien.PickUpItem(_target);
-        _target.State = ItemBehaviour.ItemState.Held;
-        _target.transform.parent = _gameStateMachine.Alien.LeftHand;
-        _target.transform.localPosition = Vector3.zero;
+        var droppedItem = _gameStateMachine.Astronaut.PickUpItem(_target);
+        if (droppedItem != null)
+        {
+            _gameStateMachine.ActiveItems.Add(droppedItem);
+        }
+        _gameStateMachine.ActiveItems.Remove(_target);
         _nextState = new FreeFallingState(_gameStateMachine);
     }
 
