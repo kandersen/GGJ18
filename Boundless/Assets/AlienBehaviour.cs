@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class AlienBehaviour : MonoBehaviour {
+public class AlienBehaviour : MonoBehaviour
+{
+	public bool InFreeFall = true;
+	private float velocity = 0.8f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public void Update ()
+	{
+		if (InFreeFall)
+		{
+			Vector2 position = transform.position;
+			position += Vector2.down * Time.deltaTime * velocity;
+			transform.position = position;
+		}
 	}
 }
