@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BackgroundBehaviour : MonoBehaviour {
 
@@ -21,16 +19,15 @@ public class BackgroundBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector2 trans = new Vector2 (0, speed);
+		Vector2 trans = new Vector2 (0, speed * Time.deltaTime);
 		background1.transform.Translate (trans);
 		background2.transform.Translate (trans);
+		
 		if (background1.transform.position.y > 7.0) {
 			background1.transform.position =  new Vector2 (0,background2.transform.position.y - height);
-			Debug.Log (1);
 		}
 		if (background2.transform.position.y > 7.0) {
 			background2.transform.position =  new Vector2 (0,background1.transform.position.y - height);
-			Debug.Log (2);
 		}
 	}
 }
