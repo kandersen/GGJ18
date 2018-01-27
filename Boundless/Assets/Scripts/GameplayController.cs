@@ -6,12 +6,14 @@ public class GameplayController : MonoBehaviour
 {
     public Signal MoveDownwardsSignal = new Signal();
     public Signal<ItemBehaviour> PickItemSignal = new Signal<ItemBehaviour>();
-
-    private Coroutine _activeRoutine;
+    public Signal<Vector2> MoveSignal = new Signal<Vector2>();
+    public Signal<ItemBehaviour> ItemDriftedOffScreenSignal = new Signal<ItemBehaviour>();
 
     public AlienBehaviour Alien;
     public BackgroundBehaviour Background;
     public Transform AlienStartPosition;
+
+    public GameStateMachine GameStateMachine; 
     
     public void Start()
     {
@@ -21,32 +23,28 @@ public class GameplayController : MonoBehaviour
     public void ConnectSignals()
     {
         MoveDownwardsSignal.AddListener(HandleMoveDown);
-        MoveDownwardsSignal.AddListener(HandlePickItem);
+        PickItemSignal.AddListener(HandlePickItem);
+        MoveSignal.AddListener(HandleMove);
+        ItemDriftedOffScreenSignal.AddListener(HandleItemDriftedOffScreen);
     }
 
-    private void HandlePickItem()
+    private void HandleItemDriftedOffScreen(ItemBehaviour obj)
     {
-        throw new System.NotImplementedException();
+        
+    }
+
+    private void HandleMove(Vector2 destination)
+    {
+        GameStateMachine._state.PositionInSpacePressed(destination);
+    }
+
+    private void HandlePickItem(ItemBehaviour item)
+    {
+        GameStateMachine._state.ItemClicked(item);
     }
 
     private void HandleMoveDown()
     {
-        if (_activeRoutine != null)
-        {
-            StopCoroutine(_activeRoutine);
-            _activeRoutine = null;
-        }
+        GameStateMachine._state.BottomScreenPressed();
     }
-    
-    private IEnumerator TransitionRoutine()
-    {
-        Alien.InFreeFall = false;
-        DOTween.To(()=> Background.speed, x=> Background.speed = x, 2.0f, 0.5f);
-        yield return Alien.transform.DOMove(AlienStartPosition.position, 3.0f).WaitForCompletion();
-        DOTween.To(()=> Background.speed, x=> Background.speed = x, 0.2f, 0.5f);
-        Alien.InFreeFall = true;
-        _activeRoutine = null;
-    }
-
-
 }
