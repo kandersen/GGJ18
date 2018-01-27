@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework.Constraints;
+using UnityEngine;
 
 public class GameplayController : MonoBehaviour
 {
-    public Signal MoveDownwardsSignal;
+    public Signal MoveDownwardsSignal = new Signal();
 
+    public void Start()
+    {
+        ConnectSignals();
+    }
+    
     public void ConnectSignals()
     {
         MoveDownwardsSignal.AddListener(HandleMoveDown);
@@ -11,6 +17,6 @@ public class GameplayController : MonoBehaviour
 
     private void HandleMoveDown()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("HandleMoveDown");
     }
 }

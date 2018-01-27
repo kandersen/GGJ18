@@ -3,7 +3,7 @@
 public class AlienBehaviour : MonoBehaviour
 {
 	public bool InFreeFall = true;
-	private float velocity = 0.8f;
+	private float velocity = 2f;
 
 	public void Update ()
 	{
