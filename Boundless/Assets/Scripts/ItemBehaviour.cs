@@ -14,11 +14,17 @@ public class ItemBehaviour : MonoBehaviour
     public ItemState State = ItemState.Drifting;
     public float Velocity = 2.0f;
 
-    public void OnMouseUpAsButton()
+    public ColliderEventReporter ColliderEventReport;
+
+    public void Start()
     {
-        Debug.Log("pressed!");
+        ColliderEventReport.OnClickedSignal.AddListener(HandleOnClick);
+    }
+
+    private void HandleOnClick()
+    {
         if (State == ItemState.Drifting)
-        {        
+        {
             GameplayController.PickItemSignal.Dispatch(this);            
         }
     }
