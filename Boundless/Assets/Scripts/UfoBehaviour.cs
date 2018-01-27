@@ -66,7 +66,7 @@ public class UfoBehaviour : MonoBehaviour {
 		astronautRenderer.enabled = true;
 		astronautRenderer.gameObject.transform.position = new Vector2 (0.2f, 0.2f);
 		astronautRB2D.simulated = true;
-		astronautRB2D.velocity = new Vector2 (2, 5);
+		astronautRB2D.velocity = new Vector2 (4, 5);
 		astronautRB2D.angularVelocity = -100f;
 
 		DOTween.ToAlpha (() => boomRenderer.color, x => boomRenderer.color = x,0,3.5f).SetEase(Ease.OutCubic);
