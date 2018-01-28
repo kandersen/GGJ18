@@ -12,7 +12,7 @@ public class TransitionToNextStageState : GameState
     {
         if (_gameStateMachine.RoundsToGo < 0)
         {
-            
+            _nextState = new LostState(_gameStateMachine);
         }
         _gameStateMachine.StartCoroutine(TransitionRoutine());
     }
@@ -33,8 +33,6 @@ public class TransitionToNextStageState : GameState
         _gameStateMachine.Astronaut.JetPackSound.Stop();
         DOTween.To(() => background.speed, x => background.speed = x, 0.2f, 0.5f);
         
-        alien.InFreeFall = true;
-
         foreach (var item in _gameStateMachine.ActiveItems)
         {
             item.gameObject.SetActive( false );
