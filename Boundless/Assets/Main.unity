@@ -458,7 +458,7 @@ Transform:
   m_LocalScale: {x: 30, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &616734014
 GameObject:
@@ -1250,7 +1250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1319643304
 GameObject:
@@ -1312,6 +1312,8 @@ MonoBehaviour:
   AstronautStartPosition: {fileID: 54371031}
   GameplayController: {fileID: 1319643305}
   Fade: {fileID: 464436540}
+  BackgroundMusic: {fileID: 1288038480}
+  Beam: {fileID: 114699307818565220, guid: 2259b7fbbf2ae254a90efa5fb3d9fabc, type: 2}
   SpawnPoints:
   - {fileID: 304273561}
   - {fileID: 1738043287}
@@ -5103,7 +5105,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1945645934
 GameObject:

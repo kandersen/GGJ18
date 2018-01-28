@@ -60,4 +60,9 @@ public class FreeFallingState : GameState
     {
         _gameStateMachine.Astronaut.Activate();
     }
+
+	public override void AnyKeyPressed()
+	{
+		_nextState = new WinState (_gameStateMachine);
+	}
 }

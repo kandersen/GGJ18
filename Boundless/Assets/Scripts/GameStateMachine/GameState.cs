@@ -26,4 +26,5 @@ public abstract class GameState
     public abstract void BottomScreenPressed();
     public abstract void PositionInSpacePressed(Vector2 pos);
     public abstract void AstronautActivated();
+	public virtual void AnyKeyPressed() {}
 }

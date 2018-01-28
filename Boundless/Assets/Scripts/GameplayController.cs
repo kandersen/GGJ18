@@ -48,6 +48,11 @@ public class GameplayController : MonoBehaviour
     {
         GameStateMachine.State.BottomScreenPressed();
     }
-    
+    /*
+	void Update() {
+		if (Input.anyKey) {
+			GameStateMachine.State.AnyKeyPressed ();
+		}
+	}*/
     
 }
