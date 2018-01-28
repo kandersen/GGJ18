@@ -29,8 +29,12 @@ public class GameStateMachine : MonoBehaviour
     public void Update()
     {
         if (State.GetNext() != null)
+<<<<<<< HEAD
         {
 			State.ExitState ();
+=======
+        {            
+>>>>>>> 24ec9f40ade5b73aa7d7f8ded4c2c4b7ac165e6f
             State = State.GetNext();
             State.EnterState();
         }

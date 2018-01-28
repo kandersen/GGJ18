@@ -7,6 +7,7 @@ public class GameplayController : MonoBehaviour
     public Signal<Vector2> MoveSignal = new Signal<Vector2>();
     public Signal<ItemBehaviour> ItemDriftedOffScreenSignal = new Signal<ItemBehaviour>();
     public Signal ActivateAstronautSignal = new Signal();    
+    public Signal TransmitterReadySignal = new Signal();
 
     public GameStateMachine GameStateMachine;
 
@@ -48,7 +49,17 @@ public class GameplayController : MonoBehaviour
     {
         GameStateMachine.State.BottomScreenPressed();
     }
+<<<<<<< HEAD
     
+=======
+
+    private void HandleTransmitterReady()
+    {
+        GameStateMachine.State.TransmitterReady();
+    }
+
+    /*
+>>>>>>> 24ec9f40ade5b73aa7d7f8ded4c2c4b7ac165e6f
 	void Update() {
 		if (Input.anyKey) {
 			GameStateMachine.State.AnyKeyPressed ();

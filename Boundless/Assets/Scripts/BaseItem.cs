@@ -15,28 +15,24 @@ public class BaseItem : MonoBehaviour
         Dud = 3,
     }
 
-    public AddOn first;
-    public AddOn second;
+    public ItemBehaviour first;
+    public ItemBehaviour second;
 
-    public AddOn Attach(AddOn addOn)
+    public void Attach(ItemBehaviour item)
     {
         if (first == null)
         {
-            addOn.transform.parent = JoinPoint1;
-            addOn.transform.position = Vector3.zero;
-            first = addOn;
-            return null;
+            item.transform.parent = JoinPoint1;
+            item.transform.localPosition = Vector3.zero;
+            first = item;
         }
-        
-        if (second == null)
+        else
         {
-            addOn.transform.parent = JoinPoint1;
-            addOn.transform.position = Vector3.zero;
-            second = addOn;
-            return null;
+            item.transform.parent = JoinPoint1;
+            item.transform.localPosition = Vector3.zero;
+            second = item;
         }
-                
-        return addOn;        
+      
     }
 
     public CombinationResult CheckCompletion()
@@ -44,18 +40,17 @@ public class BaseItem : MonoBehaviour
         if (first == null || second == null)
         {
             return CombinationResult.NotDone;
-        }
+        }               
         
-        var switchable = first.Class == AddOn.ItemClass.Switch ||
-                         second.Class == AddOn.ItemClass.Switch;
+        var switchable = first.AddOn.Class == AddOn.ItemClass.Switch ||
+                         second.AddOn.Class == AddOn.ItemClass.Switch;
 
         if (!switchable) 
             return CombinationResult.Dud;
+
+        var hasAntenna = first.AddOn.Class == AddOn.ItemClass.Antenna ||
+                         second.AddOn.Class == AddOn.ItemClass.Antenna;
         
-        if (first.Class == AddOn.ItemClass.Antenna || second.Class == AddOn.ItemClass.Antenna)
-        {
-            return CombinationResult.Success;
-        }
-        return CombinationResult.Switchable;
+        return hasAntenna ? CombinationResult.Success : CombinationResult.Switchable;
     }
 }

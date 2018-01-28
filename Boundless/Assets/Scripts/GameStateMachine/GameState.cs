@@ -2,10 +2,6 @@
 
 public abstract class GameState
 {
-    public abstract void UpdateState();
-    public abstract void EnterState();
-    public abstract void ExitState();
-
     protected GameStateMachine _gameStateMachine;
     protected GameState _nextState;    
 
@@ -15,16 +11,53 @@ public abstract class GameState
         _gameStateMachine = gameStateMachine;
     }
 
+    public virtual void UpdateState()
+    {
+    }
+
+    public virtual void EnterState()
+    {
+    }
+
+    public virtual void ExitState()
+    {
+        
+    }
+
     public GameState GetNext()
     {
         return _nextState;
     }
 
-    public abstract void AlienReachedBottom();
-    public abstract void ItemClicked(ItemBehaviour item);
-    public abstract void ItemDriftedOff(ItemBehaviour item);
-    public abstract void BottomScreenPressed();
-    public abstract void PositionInSpacePressed(Vector2 pos);
-    public abstract void AstronautActivated();
-	public virtual void AnyKeyPressed() {}
+    public virtual void AlienReachedBottom()
+    {
+    }
+
+    public virtual void ItemClicked(ItemBehaviour item)
+    {
+    }
+
+    public virtual void ItemDriftedOff(ItemBehaviour item)
+    {
+    }
+
+    public virtual void BottomScreenPressed()
+    {
+    }
+
+    public virtual void PositionInSpacePressed(Vector2 pos)
+    {
+    }
+
+    public virtual void AstronautActivated()
+    {
+    }
+
+    public virtual void TransmitterReady()
+    {
+    }
+
+	public virtual void AnyKeyPressed() 
+    {        
+    }
 }

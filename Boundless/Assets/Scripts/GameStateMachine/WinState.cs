@@ -10,10 +10,6 @@ public class WinState : GameState
     {
     }
 
-    public override void UpdateState()
-    {
-    }
-
     public override void EnterState()
     {
         _gameStateMachine.StartCoroutine(WinAnimationRoutine());
@@ -37,33 +33,5 @@ public class WinState : GameState
 
 		PersistentData.GameStarted = true;
 		SceneManager.LoadSceneAsync ("Intro");
-    }
-
-    public override void ExitState()
-    {
-    }
-
-    public override void AlienReachedBottom()
-    {
-    }
-
-    public override void ItemClicked(ItemBehaviour item)
-    {
-    }
-
-    public override void ItemDriftedOff(ItemBehaviour item)
-    {
-    }
-
-    public override void BottomScreenPressed()
-    {
-    }
-
-    public override void PositionInSpacePressed(Vector2 pos)
-    {
-    }
-
-    public override void AstronautActivated()
-    {
     }
 }

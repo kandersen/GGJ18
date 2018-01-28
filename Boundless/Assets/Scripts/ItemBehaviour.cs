@@ -43,38 +43,38 @@ public class ItemBehaviour : MonoBehaviour
         transform.position = position;
     }
 
-    public List<ItemBehaviour> Combine(ItemBehaviour other)
+    public ItemBehaviour Combine(ItemBehaviour other)
+    {
+        var combineBase = this;
+        var newBit = other;
+        if (combineBase.BaseItem == null)
+        {
+            combineBase = other;
+            newBit = this;
+        }
+        
+        combineBase.BaseItem.Attach(newBit);
+        return combineBase;
+    }
+
+    public bool Combineable(ItemBehaviour other)
     {
         if (BaseItem == null && other.BaseItem == null)
         {
-            AudioSource.PlayCombineFailure();            ;
-            return new List<ItemBehaviour>() {this, other};                    
+            return false;
         }
 
         if (AddOn != null && other.AddOn != null)
         {
-            AudioSource.PlayCombineFailure();
-            return new List<ItemBehaviour>() {this, other};            
+            return false;
         }
-
+        
         var combineBase = this;
-        var newPiece = other;
         if (BaseItem == null)
         {
-            newPiece = this;
             combineBase = other;
         }
 
-        var attemptResult = combineBase.BaseItem.Attach(newPiece.AddOn);
-        if (attemptResult == null)
-        {
-            AudioSource.PlayCombineSuccess();
-            return new List<ItemBehaviour>() {combineBase};
-        }
-        else
-        {
-            AudioSource.PlayCombineFailure();
-            return new List<ItemBehaviour>() {combineBase, attemptResult.Item};
-        }
+        return combineBase.BaseItem.first == null || combineBase.BaseItem.second == null; 
     }
 }
