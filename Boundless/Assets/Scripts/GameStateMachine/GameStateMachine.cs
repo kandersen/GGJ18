@@ -13,6 +13,11 @@ public class GameStateMachine : MonoBehaviour
     public ParticleSystem DebrisParticleSystem;
     
 	public BeamBehaviour Beam;
+	public SpriteRenderer Text1;
+	public SpriteRenderer Text2;
+	public SpriteRenderer Text3;
+	public SpriteRenderer Text4;
+	public SpriteRenderer Text5;
 
     public List<Transform> SpawnPoints;
     

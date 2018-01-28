@@ -30,7 +30,64 @@ public class LostState : GameState
 		_gameStateMachine.BackgroundMusic.DOFade (0.2f, 3);
 		yield return nautStartTrans.DOMove (Vector2.zero, 3).WaitForCompletion();
 
-		yield return new WaitForSeconds (15);
+		yield return new WaitForSeconds (10);
+
+
+		//1
+		SpriteRenderer text = GameObject.Instantiate (_gameStateMachine.Text1);
+		text.color = new Color (1, 1, 1, 0);
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 1, 0.5f).WaitForCompletion();
+
+		yield return new WaitForSeconds (7);
+
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 0, 0.5f).WaitForCompletion ();
+
+		yield return new WaitForSeconds (3);
+
+
+		//2
+		text = GameObject.Instantiate (_gameStateMachine.Text2);
+		text.color = new Color (1, 1, 1, 0);
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 1, 0.5f).WaitForCompletion();
+
+		yield return new WaitForSeconds (5);
+
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 0, 0.5f).WaitForCompletion ();
+
+		yield return new WaitForSeconds (3);
+
+		//3
+		text = GameObject.Instantiate (_gameStateMachine.Text3);
+		text.color = new Color (1, 1, 1, 0);
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 1, 0.5f).WaitForCompletion();
+
+		yield return new WaitForSeconds (7);
+
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 0, 0.5f).WaitForCompletion ();
+
+		yield return new WaitForSeconds (3);
+
+		//4
+		text = GameObject.Instantiate (_gameStateMachine.Text4);
+		text.color = new Color (1, 1, 1, 0);
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 1, 0.5f).WaitForCompletion();
+
+		yield return new WaitForSeconds (10);
+
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 0, 0.5f).WaitForCompletion ();
+
+		yield return new WaitForSeconds (3);
+
+		//5
+		text = GameObject.Instantiate (_gameStateMachine.Text5);
+		text.color = new Color (1, 1, 1, 0);
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 1, 0.5f).WaitForCompletion();
+
+		yield return new WaitForSeconds (7);
+
+		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 0, 0.5f).WaitForCompletion ();
+
+		yield return new WaitForSeconds (3);
 
 	}
 
