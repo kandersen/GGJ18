@@ -63,6 +63,6 @@ public class FreeFallingState : GameState
 
 	public override void AnyKeyPressed()
 	{
-		_nextState = new WinState (_gameStateMachine);
+		_nextState = new LostState (_gameStateMachine);
 	}
 }

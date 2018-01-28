@@ -30,6 +30,7 @@ public class GameStateMachine : MonoBehaviour
     {
         if (State.GetNext() != null)
         {
+			State.ExitState ();
             State = State.GetNext();
             State.EnterState();
         }
