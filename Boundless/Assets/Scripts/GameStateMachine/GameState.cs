@@ -56,4 +56,8 @@ public abstract class GameState
     public virtual void TransmitterReady()
     {
     }
+
+	public virtual void AnyKeyPressed() 
+    {        
+    }
 }

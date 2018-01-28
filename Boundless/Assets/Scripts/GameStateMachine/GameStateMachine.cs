@@ -8,7 +8,10 @@ public class GameStateMachine : MonoBehaviour
     public Transform AstronautStartPosition;
     public GameplayController GameplayController;
     public MeshRenderer Fade;
+	public AudioSource BackgroundMusic;
     
+	public BeamBehaviour Beam;
+
     public List<Transform> SpawnPoints;
     
     public GameState State;
@@ -26,7 +29,7 @@ public class GameStateMachine : MonoBehaviour
     public void Update()
     {
         if (State.GetNext() != null)
-        {
+        {            
             State = State.GetNext();
             State.EnterState();
         }
