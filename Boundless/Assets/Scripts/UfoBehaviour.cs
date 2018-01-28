@@ -1,4 +1,4 @@
-﻿	using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +11,8 @@ public class UfoBehaviour : MonoBehaviour {
 	public SpriteRenderer UfoWhiteRenderer;
 	public SpriteRenderer AstronautRenderer;
 	public SpriteRenderer BoundlessRenderer;
+	public SpriteRenderer BeamRenderer;
+	public SpriteRenderer BeamLineRenderer;
 
 	public MeshRenderer BlackRenderer;
 
@@ -25,16 +27,21 @@ public class UfoBehaviour : MonoBehaviour {
 
 	private Coroutine Scene = null;
 	private Coroutine Beam = null;
-
+	 
 	// Use this for initialization
 	void Start () {
+		Debug.Log ("Game started: " + PersistentData.GameStarted);
 		if (PersistentData.GameStarted) {
 			BoundlessRenderer.enabled = false;
+		} else {
+			BeamLineRenderer.color = new Color (1, 1, 1, 0);
+			BeamRenderer.color = new Color (1, 1, 1, 0);
 		}
 		AstronautRB2D.simulated = false;
 		Cer.OnTriggerSignal.AddListener (HandleTrigger);
 		UfoWhiteRenderer.color = new Color (1, 1, 1, 0);
 		BlackRenderer.material.color = new Color (0, 0, 0, 0);
+
 	} 
 
 	void OnMouseUpAsButton () {
@@ -43,6 +50,49 @@ public class UfoBehaviour : MonoBehaviour {
 			Scene = StartCoroutine (AndAction ());
 		}
 
+	}
+
+	void Update() {
+		if (PersistentData.GameStarted && Beam == null && Scene == null) {
+			Beam = StartCoroutine (PlayBeam ());
+		}
+	}
+
+
+	IEnumerator PlayBeam() {
+		
+
+		BeamLineRenderer.color = new Color (1, 1, 1, 1);
+		BeamRenderer.color = new Color (1, 1, 1, 0.5f);
+
+		yield return new WaitForSeconds (1f);
+		AstronautRenderer.enabled = true;
+		Vector2 astroPos = AstronautRenderer.gameObject.transform.position;
+		Quaternion astroRot = AstronautRenderer.gameObject.transform.rotation;
+		Vector3 astroScale = AstronautRenderer.gameObject.transform.localScale;
+		int astroSort = AstronautRenderer.sortingOrder;
+
+		AstronautRenderer.gameObject.transform.position = new Vector2(UfoNormalRenderer.transform.position.x,-7f);
+		AstronautRenderer.gameObject.transform.rotation = Quaternion.identity;
+		AstronautRenderer.gameObject.transform.localScale = new Vector3 (0.2f, 0.2f, 0f);
+		AstronautRenderer.sortingOrder = 7;
+
+
+		yield return AstronautRenderer.gameObject.transform.DOMove (new Vector3(0,0,0),8f).WaitForCompletion();
+
+
+		AstronautRenderer.enabled = false;
+		AstronautRenderer.gameObject.transform.position = astroPos;
+		AstronautRenderer.gameObject.transform.rotation = astroRot;
+		AstronautRenderer.gameObject.transform.localScale = astroScale;
+		AstronautRenderer.sortingOrder = astroSort;
+
+		DOTween.ToAlpha (() => BeamLineRenderer.color, x => BeamLineRenderer.color = x, 0, 0.2f);
+		DOTween.ToAlpha (() => BeamRenderer.color, x => BeamRenderer.color = x, 0, 0.2f);
+		BeamLineRenderer.enabled = false;
+		BeamRenderer.enabled = false;
+
+		yield return null;
 	}
 
 	IEnumerator AndAction() {
@@ -84,6 +134,8 @@ public class UfoBehaviour : MonoBehaviour {
 
 		PersistentData.GameStarted = true;
 
+
+		//SceneManager.LoadSceneAsync ("Intro");
 		SceneManager.LoadSceneAsync ("Main");
 
 
