@@ -1315,6 +1315,11 @@ MonoBehaviour:
   BackgroundMusic: {fileID: 1288038480}
   DebrisParticleSystem: {fileID: 1877510517}
   Beam: {fileID: 114699307818565220, guid: 2259b7fbbf2ae254a90efa5fb3d9fabc, type: 2}
+  Text1: {fileID: 212577975710924938, guid: cb35e8f6ba4c66740bf0c5fef1395eee, type: 2}
+  Text2: {fileID: 212683062327920498, guid: b5800801d8ad1744c84e89ec91fbe51c, type: 2}
+  Text3: {fileID: 212683804999075104, guid: 700e3ef1dfd6e8e438cea491998e18e0, type: 2}
+  Text4: {fileID: 212492280474798576, guid: 7e7bd082746c897438cc209f840e8be3, type: 2}
+  Text5: {fileID: 212396110870425572, guid: d3b902b191bccae469f9096285f475fd, type: 2}
   SpawnPoints:
   - {fileID: 304273561}
   - {fileID: 1738043287}
