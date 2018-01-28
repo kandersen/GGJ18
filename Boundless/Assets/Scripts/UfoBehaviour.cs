@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿	using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,78 +6,86 @@ using DG.Tweening;
 
 public class UfoBehaviour : MonoBehaviour {
 
-	public SpriteRenderer boomRenderer;
-	public SpriteRenderer ufoNormalRenderer;
-	public SpriteRenderer ufoWhiteRenderer;
-	public SpriteRenderer astronautRenderer;
-	public SpriteRenderer boundlessRenderer;
+	public SpriteRenderer BoomRenderer;
+	public SpriteRenderer UfoNormalRenderer;
+	public SpriteRenderer UfoWhiteRenderer;
+	public SpriteRenderer AstronautRenderer;
+	public SpriteRenderer BoundlessRenderer;
 
-	public MeshRenderer blackRenderer;
+	public MeshRenderer BlackRenderer;
 
-	public Rigidbody2D astronautRB2D;
+	public Rigidbody2D AstronautRB2D;
 
-	public HBackgroundBehaviour background;	
+	public HBackgroundBehaviour Background;	
 
-	public ColliderEventReporter cer;
+	public ColliderEventReporter Cer;
 
 	public AudioSource AudioSource;
 	public AudioClip ExplosionClip;
 
-	private Coroutine scene = null;
+	private Coroutine Scene = null;
+	private Coroutine Beam = null;
 
 	// Use this for initialization
 	void Start () {
-		astronautRB2D.simulated = false;
-		cer.OnTriggerSignal.AddListener (HandleTrigger);
-		ufoWhiteRenderer.color = new Color (1, 1, 1, 0);
-		blackRenderer.material.color = new Color (0, 0, 0, 0);
-	}
+		if (PersistentData.GameStarted) {
+			BoundlessRenderer.enabled = false;
+		}
+		AstronautRB2D.simulated = false;
+		Cer.OnTriggerSignal.AddListener (HandleTrigger);
+		UfoWhiteRenderer.color = new Color (1, 1, 1, 0);
+		BlackRenderer.material.color = new Color (0, 0, 0, 0);
+	} 
 
 	void OnMouseUpAsButton () {
 		Debug.Log("Yes, on mouse up as button works.");
-		if (scene == null) {
-			scene = StartCoroutine (AndAction ());
+		if (Scene == null) {
+			Scene = StartCoroutine (AndAction ());
 		}
 
 	}
 
 	IEnumerator AndAction() {
-		yield return DOTween.ToAlpha (() => boundlessRenderer.color, x => boundlessRenderer.color = x,0,2f);
-
+		if (!PersistentData.GameStarted) {
+			yield return DOTween.ToAlpha (() => BoundlessRenderer.color, x => BoundlessRenderer.color = x, 0, 2f);
+		}
 		yield return new WaitForSeconds (1);
 
 		DOTween.To(() => AudioSource.volume, v => AudioSource.volume = v, 0f, 2.8f);
 		
-		yield return DOTween.ToAlpha (() => ufoWhiteRenderer.color, x => ufoWhiteRenderer.color = x, 1, 2.8f).SetEase(Ease.InQuart).WaitForCompletion();
+		yield return DOTween.ToAlpha (() => UfoWhiteRenderer.color, x => UfoWhiteRenderer.color = x, 1, 2.8f).SetEase(Ease.InQuart).WaitForCompletion();
 
 		AudioSource.Stop();
 
 		yield return new WaitForSeconds (0.2f);
 
-		ufoNormalRenderer.enabled = false;
-		ufoWhiteRenderer.enabled = false;
-		boomRenderer.gameObject.transform.position = ufoWhiteRenderer.gameObject.transform.position;
-		boomRenderer.enabled = true;
+		UfoNormalRenderer.enabled = false;
+		UfoWhiteRenderer.enabled = false;
+		BoomRenderer.gameObject.transform.position = UfoWhiteRenderer.gameObject.transform.position;
+		BoomRenderer.enabled = true;
 
 		AudioSource.volume = 1.0f;
 		AudioSource.PlayOneShot(ExplosionClip);
 
-		yield return DOTween.To (() => background.speed, x => background.speed = x, 0, 0.5f).WaitForCompletion();
+		yield return DOTween.To (() => Background.speed, x => Background.speed = x, 0, 0.5f).WaitForCompletion();
 
 
-		astronautRenderer.enabled = true;
-		astronautRenderer.gameObject.transform.position = new Vector2 (0.2f, 0.2f);
-		astronautRB2D.simulated = true;
-		astronautRB2D.velocity = new Vector2 (4, 5);
-		astronautRB2D.angularVelocity = -100f;
+		AstronautRenderer.enabled = true;
+		AstronautRenderer.gameObject.transform.position = new Vector2 (0.2f, 0.2f);
+		AstronautRB2D.simulated = true;
+		AstronautRB2D.velocity = new Vector2 (4, 5);
+		AstronautRB2D.angularVelocity = -100f;
 
-		DOTween.ToAlpha (() => boomRenderer.color, x => boomRenderer.color = x,0,3.5f).SetEase(Ease.OutCubic);
+		DOTween.ToAlpha (() => BoomRenderer.color, x => BoomRenderer.color = x,0,3.5f).SetEase(Ease.OutCubic);
 	}
 
 	IEnumerator End() {
-		yield return DOTween.ToAlpha (() => blackRenderer.material.color, x => blackRenderer.material.color = x,1,0.5f).WaitForCompletion();
+		yield return DOTween.ToAlpha (() => BlackRenderer.material.color, x => BlackRenderer.material.color = x,1,0.5f).WaitForCompletion();
+
+		PersistentData.GameStarted = true;
 
 		SceneManager.LoadSceneAsync ("Main");
+
 
 	}
 

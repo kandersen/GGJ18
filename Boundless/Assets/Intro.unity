@@ -870,15 +870,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd91d3679fd029540aad6bf532e6e44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boomRenderer: {fileID: 574424449}
-  ufoNormalRenderer: {fileID: 466370291}
-  ufoWhiteRenderer: {fileID: 1610557228}
-  astronautRenderer: {fileID: 642171296}
-  boundlessRenderer: {fileID: 1206896381}
-  blackRenderer: {fileID: 244414708}
-  astronautRB2D: {fileID: 642171298}
-  background: {fileID: 405485718}
-  cer: {fileID: 1754150751}
+  BoomRenderer: {fileID: 574424449}
+  UfoNormalRenderer: {fileID: 466370291}
+  UfoWhiteRenderer: {fileID: 1610557228}
+  AstronautRenderer: {fileID: 642171296}
+  BoundlessRenderer: {fileID: 1206896381}
+  BlackRenderer: {fileID: 244414708}
+  AstronautRB2D: {fileID: 642171298}
+  Background: {fileID: 405485718}
+  Cer: {fileID: 1754150751}
   AudioSource: {fileID: 1467695230}
   ExplosionClip: {fileID: 8300000, guid: 3ed1d6dda40d64565b51a32ac98d42e9, type: 3}
 --- !u!58 &1467695229
