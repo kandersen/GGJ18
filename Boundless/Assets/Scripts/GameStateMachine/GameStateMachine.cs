@@ -31,5 +31,6 @@ public class GameStateMachine : MonoBehaviour
             State.EnterState();
         }
         State.UpdateState();
-    }   
+    }
+
 }
