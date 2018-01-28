@@ -27,7 +27,7 @@ public class LostState : GameState
 		//tween nautStartTrans to 
 		var startPosition = _gameStateMachine.AstronautStartPosition;
 
-		_gameStateMachine.BackgroundMusic.DOFade (0.2f, 3);
+		_gameStateMachine.BackgroundMusic.DOFade (0f, 10);
 		yield return nautStartTrans.DOMove (Vector2.zero, 3).WaitForCompletion();
 
 		yield return new WaitForSeconds (10);
