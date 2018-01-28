@@ -54,8 +54,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4638992539578174}
   - component: {fileID: 50101914313423174}
-  - component: {fileID: 61249847361842206}
   - component: {fileID: 114312086389002864}
+  - component: {fileID: 58397001152472136}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Item
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189258831024112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -16.704674, y: -5.814041, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4147938856816186}
@@ -124,8 +124,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61249847361842206
-BoxCollider2D:
+--- !u!58 &58397001152472136
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -137,18 +137,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31297398, y: 1.2749519}
-  m_EdgeRadius: 0
+  m_Radius: 0.89
 --- !u!114 &114258520090559428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,6 +189,7 @@ MonoBehaviour:
   BaseItem: {fileID: 0}
   AddOn: {fileID: 114452968291902662}
   GameplayController: {fileID: 0}
+  AudioSource: {fileID: 0}
   DriftBehaviour: {fileID: 114258520090559428}
   State: 0
   Velocity: 2

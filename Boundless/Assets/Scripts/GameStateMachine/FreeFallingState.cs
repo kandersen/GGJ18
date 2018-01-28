@@ -13,7 +13,6 @@ public class FreeFallingState : GameState
     public override void EnterState()
     {
         _gameStateMachine.StartCoroutine(ReleaseRoutine());
-        _gameStateMachine.Astronaut.InFreeFall = true;
     }
 
     private IEnumerator ReleaseRoutine()
@@ -62,11 +61,4 @@ public class FreeFallingState : GameState
         _nextState = new WinState (_gameStateMachine);
     }
 
-}
-
-public class TransmitterReadyState : GameState
-{
-    public TransmitterReadyState(GameStateMachine gameStateMachine) : base(gameStateMachine)
-    {
-    }
 }

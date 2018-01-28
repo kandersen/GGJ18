@@ -75,6 +75,7 @@ public class AstronautBehaviour : MonoBehaviour
 
     public void Activate()
     {
+        Debug.Log("Activating, holding items: " + Items.Count);
         if (Items.Count != 2) 
             return;
         
