@@ -18,12 +18,13 @@ public class ChaseAndGetItemState : GameState
 
     public override void EnterState()
     {
+        _gameStateMachine.Astronaut.JetPackSound.Play();
         _coroutine = _gameStateMachine.StartCoroutine(ChaseRoutine());
     }
 
     private IEnumerator ChaseRoutine()
     {
-        var delta = _target.transform.position - _gameStateMachine.Astronaut.transform.position;
+        var delta = _target.transform.position - _gameStateMachine.Astronaut.transform.position;      
         while (delta.magnitude > 0.05f)
         {
             _gameStateMachine.Astronaut.transform.Translate(delta.normalized * Time.deltaTime * 6.0f);
@@ -31,6 +32,7 @@ public class ChaseAndGetItemState : GameState
             yield return null;
             delta = _target.transform.position - _gameStateMachine.Astronaut.transform.position;
         }      
+        _gameStateMachine.Astronaut.JetPackSound.Stop();
         var droppedItem = _gameStateMachine.Astronaut.PickUpItem(_target);
         if (droppedItem != null)
         {
