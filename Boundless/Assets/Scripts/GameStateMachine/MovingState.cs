@@ -19,6 +19,7 @@ public class MovingState : GameState
     public override void EnterState()
     {
         _coroutine = _gameStateMachine.StartCoroutine(MoveRoutine());
+        _gameStateMachine.Astronaut.JetPackSound.Play();
     }
 
     private IEnumerator MoveRoutine()
@@ -26,12 +27,13 @@ public class MovingState : GameState
         var delta = _target - _gameStateMachine.Astronaut.transform.position;
         var speed = delta.y > 0 ? 4.0f : 8.0f;
         while (delta.magnitude > 0.1f)
-        {
+        {          
             _gameStateMachine.Astronaut.transform.Translate(delta.normalized * Time.deltaTime * speed);
             Debug.DrawLine(_gameStateMachine.Astronaut.transform.position, _target, Color.green);
             yield return null;
             delta = _target - _gameStateMachine.Astronaut.transform.position;
         }
+        _gameStateMachine.Astronaut.JetPackSound.Stop();
         _nextState = new FreeFallingState(_gameStateMachine);
     }
 

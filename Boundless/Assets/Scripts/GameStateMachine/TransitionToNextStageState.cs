@@ -28,8 +28,10 @@ public class TransitionToNextStageState : GameState
         {
             item.Velocity = 8.0f;
         }        
+        _gameStateMachine.Astronaut.JetPackSound.Play();
         yield return alien.transform.DOMove(_gameStateMachine.AstronautStartPosition.position, 3.0f).WaitForCompletion();
-        DOTween.To(()=> background.speed, x=> background.speed = x, 0.2f, 0.5f);
+        _gameStateMachine.Astronaut.JetPackSound.Stop();
+        DOTween.To(() => background.speed, x => background.speed = x, 0.2f, 0.5f);
         
         alien.InFreeFall = true;
 

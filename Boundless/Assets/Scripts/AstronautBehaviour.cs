@@ -16,6 +16,9 @@ public class AstronautBehaviour : MonoBehaviour
 	public Transform LeftHand;
 	public Transform RightHand;
 
+	public AstronautAudio AstronautAudio;
+	public JetpackSound JetPackSound;
+	
 	public void Start()
 	{
 		ColliderEventReporter.OnClickedSignal.AddListener(HandleOnClick);
@@ -28,7 +31,8 @@ public class AstronautBehaviour : MonoBehaviour
 
 	public ItemBehaviour PickUpItem(ItemBehaviour item)
 	{
-		ItemBehaviour result = null;
+		ItemBehaviour result = null;	
+		AstronautAudio.PlayPickupBattery();
 		switch (Items.Count)
 		{
 				case 0:
