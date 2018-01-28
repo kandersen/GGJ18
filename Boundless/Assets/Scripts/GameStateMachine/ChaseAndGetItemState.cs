@@ -12,10 +12,6 @@ public class ChaseAndGetItemState : GameState
         _target = item;
     }
 
-    public override void UpdateState()
-    {
-    }
-
     public override void EnterState()
     {
         _gameStateMachine.Astronaut.JetPackSound.Play();
@@ -32,18 +28,15 @@ public class ChaseAndGetItemState : GameState
             yield return null;
             delta = _target.transform.position - _gameStateMachine.Astronaut.transform.position;
         }      
-        _gameStateMachine.Astronaut.JetPackSound.Stop();
+        _gameStateMachine.Astronaut.JetPackSound.Stop();        
         var droppedItem = _gameStateMachine.Astronaut.PickUpItem(_target);
+        _gameStateMachine.Astronaut.AstronautAudio.PlayPickupBattery();
         if (droppedItem != null)
         {
             _gameStateMachine.ActiveItems.Add(droppedItem);
         }
         _gameStateMachine.ActiveItems.Remove(_target);
         _nextState = new FreeFallingState(_gameStateMachine);
-    }
-
-    public override void ExitState()
-    {
     }
 
     public override void AlienReachedBottom()

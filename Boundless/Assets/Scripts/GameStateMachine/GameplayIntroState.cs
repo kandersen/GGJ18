@@ -8,10 +8,6 @@ public class GameplayIntroState : GameState
     {
     }
 
-    public override void UpdateState()
-    {
-    }
-
     public override void EnterState()
     {
         _gameStateMachine.Fade.gameObject.SetActive( true );
@@ -32,33 +28,5 @@ public class GameplayIntroState : GameState
         yield return naut.DOMove(_gameStateMachine.AstronautStartPosition.position, 3.0f).SetEase(Ease.OutElastic).WaitForCompletion();
         _gameStateMachine.Fade.gameObject.SetActive( false );
         _nextState = new FreeFallingState(_gameStateMachine);
-    }
-
-    public override void ExitState()
-    {
-    }
-
-    public override void AlienReachedBottom()
-    {
-    }
-
-    public override void ItemClicked(ItemBehaviour item)
-    {
-    }
-
-    public override void ItemDriftedOff(ItemBehaviour item)
-    {
-    }
-
-    public override void BottomScreenPressed()
-    {
-    }
-
-    public override void PositionInSpacePressed(Vector2 pos)
-    {
-    }
-
-    public override void AstronautActivated()
-    {        
     }
 }

@@ -1,15 +1,10 @@
 ﻿using System.Collections;
 using DG.Tweening;
-using UnityEngine;
 
 public class TransitionToNextStageState : GameState
 {
     public TransitionToNextStageState(GameStateMachine gameStateMachine) : base(gameStateMachine)
     {
-    }
-
-    public override void UpdateState()
-    {        
     }
 
     public override void EnterState()
@@ -49,33 +44,5 @@ public class TransitionToNextStageState : GameState
         }
         
         _nextState = new FreeFallingState(_gameStateMachine);
-    }
-
-    public override void ExitState()
-    {
-    }
-
-    public override void AlienReachedBottom()
-    {
-    }
-
-    public override void ItemClicked(ItemBehaviour item)
-    {
-    }
-
-    public override void ItemDriftedOff(ItemBehaviour item)
-    {
-    }
-
-    public override void BottomScreenPressed()
-    {
-    }
-
-    public override void PositionInSpacePressed(Vector2 pos)
-    {
-    }
-
-    public override void AstronautActivated()
-    {
     }
 }

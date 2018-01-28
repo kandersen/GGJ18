@@ -10,10 +10,6 @@ public class FreeFallingState : GameState
     {
     }
 
-    public override void UpdateState()
-    {
-    }
-
     public override void EnterState()
     {
         _gameStateMachine.StartCoroutine(ReleaseRoutine());
@@ -40,12 +36,7 @@ public class FreeFallingState : GameState
     {
         _nextState = new ChaseAndGetItemState(item, _gameStateMachine);
     }
-
-    public override void ItemDriftedOff(ItemBehaviour item)
-    {
-        return;
-    }
-
+    
     public override void BottomScreenPressed()
     {
         _nextState = new TransitionToNextStageState(_gameStateMachine);
@@ -59,5 +50,17 @@ public class FreeFallingState : GameState
     public override void AstronautActivated()
     {
         _gameStateMachine.Astronaut.Activate();
+    }
+
+    public override void TransmitterReady()
+    {
+        _nextState = new TransmitterReadyState(_gameStateMachine);
+    }
+}
+
+public class TransmitterReadyState : GameState
+{
+    public TransmitterReadyState(GameStateMachine gameStateMachine) : base(gameStateMachine)
+    {
     }
 }
