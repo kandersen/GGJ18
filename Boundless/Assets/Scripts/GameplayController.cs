@@ -23,6 +23,7 @@ public class GameplayController : MonoBehaviour
         MoveSignal.AddListener(HandleMove);
         ItemDriftedOffScreenSignal.AddListener(HandleItemDriftedOffScreen);
         ActivateAstronautSignal.AddListener(HandleActivateAstronaut);
+        TransmitterReadySignal.AddListener(HandleTransmitterReady);
     }
 
     private void HandleActivateAstronaut()

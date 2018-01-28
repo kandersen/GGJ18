@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using DG.Tweening;
+using UnityEngine;
 
 public class TransitionToNextStageState : GameState
 {
@@ -9,11 +10,15 @@ public class TransitionToNextStageState : GameState
 
     public override void EnterState()
     {
+        if (_gameStateMachine.RoundsToGo < 0)
+        {
+            
+        }
         _gameStateMachine.StartCoroutine(TransitionRoutine());
     }
 
     private IEnumerator TransitionRoutine()
-    {
+    {                
         var alien = _gameStateMachine.Astronaut;
         var background = _gameStateMachine.BackgroundBehaviour;
         alien.InFreeFall = false;
@@ -35,14 +40,18 @@ public class TransitionToNextStageState : GameState
             item.gameObject.SetActive( false );
         }
         _gameStateMachine.ActiveItems.Clear();
-            
-        foreach (var spawnpoint in _gameStateMachine.SpawnPoints)
+
+        for (var i = 0; i < _gameStateMachine.RoundsToGo; i++)
         {
             var item = _gameStateMachine.ItemFactory.SpawnItem();
-            item.transform.position = spawnpoint.position;
+            item.transform.position = new Vector3(Random.value * 14f - 7.0f, -8.0f, 0f);
             _gameStateMachine.ActiveItems.Add(item);
         }
-        
+
+        _gameStateMachine.RoundsToGo--;
+        var emissions = _gameStateMachine.DebrisParticleSystem.emission;
+        emissions.rateOverTime = new ParticleSystem.MinMaxCurve(emissions.rateOverTime.constant - 1.0f);
+                       
         _nextState = new FreeFallingState(_gameStateMachine);
     }
 }

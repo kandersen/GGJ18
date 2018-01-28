@@ -54,7 +54,7 @@ public class FreeFallingState : GameState
 
     public override void TransmitterReady()
     {
-        _nextState = new TransmitterReadyState(_gameStateMachine);
+        _nextState = new WinState(_gameStateMachine);
     }
 
     public override void AnyKeyPressed()

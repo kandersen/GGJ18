@@ -73,4 +73,10 @@ public class MovingState : GameState
     {
         _gameStateMachine.Astronaut.Activate();
     }
+    
+    public override void TransmitterReady()
+    {
+        _nextState = new WinState(_gameStateMachine);
+    }
+
 }
