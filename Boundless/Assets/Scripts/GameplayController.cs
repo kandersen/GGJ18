@@ -56,12 +56,12 @@ public class GameplayController : MonoBehaviour
         GameStateMachine.State.TransmitterReady();
     }
 
-    /*
+    
 	void Update() {
 		if (Input.anyKey) {
 			GameStateMachine.State.AnyKeyPressed ();
 		}
 	}
-	*/
+
     
 }

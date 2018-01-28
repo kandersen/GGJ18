@@ -58,7 +58,14 @@ public class FreeFallingState : GameState
 
     public override void AnyKeyPressed()
     {
-        _nextState = new WinState (_gameStateMachine);
+		if(Input.GetKeyDown("w")) {
+			Debug.Log ("Win start");
+        	_nextState = new WinState (_gameStateMachine);
+		}
+		if(Input.GetKeyDown("l")) {
+			Debug.Log ("Lost start");
+			_nextState = new LostState (_gameStateMachine);
+		}
     }
 
 }
