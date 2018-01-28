@@ -88,7 +88,7 @@ public class AstronautBehaviour : MonoBehaviour
             Debug.Log(status);
             if (status == BaseItem.CombinationResult.Success)
             {
-                PickUpItem(left.Combine(right));
+                PickUpItem(result);
                 AstronautAudio.PlayCombineSuccess();            
                 GameplayController.TransmitterReadySignal.Dispatch();
             } else if (status == BaseItem.CombinationResult.Dud)
@@ -98,6 +98,10 @@ public class AstronautBehaviour : MonoBehaviour
                 result.DriftBehaviour.enabled = true;
                 GameplayController.GameStateMachine.ActiveItems.Add(result);
                 AstronautAudio.PlayCombineFailure();
+            }
+            else
+            {
+                PickUpItem(result);
             }
         }
         else
