@@ -82,12 +82,21 @@ public class AstronautBehaviour : MonoBehaviour
         var left = Items.Pop();
         if (left.Combineable(right))
         {
-            PickUpItem(left.Combine(right));
-            AstronautAudio.PlayCombineSuccess();
-            var status = left.BaseItem.CheckCompletion();
+            var result = left.Combine(right);
+            var status = result.BaseItem.CheckCompletion();
+            Debug.Log(status);
             if (status == BaseItem.CombinationResult.Success)
             {
+                PickUpItem(left.Combine(right));
+                AstronautAudio.PlayCombineSuccess();            
                 GameplayController.TransmitterReadySignal.Dispatch();
+            } else if (status == BaseItem.CombinationResult.Dud)
+            {
+                result.State = ItemBehaviour.ItemState.Dropped;
+                result.transform.parent = null;
+                result.DriftBehaviour.enabled = true;
+                GameplayController.GameStateMachine.ActiveItems.Add(result);
+                AstronautAudio.PlayCombineFailure();
             }
         }
         else

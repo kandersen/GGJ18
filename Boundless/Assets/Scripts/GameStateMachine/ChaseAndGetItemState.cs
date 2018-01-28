@@ -79,4 +79,10 @@ public class ChaseAndGetItemState : GameState
     {
         _gameStateMachine.Astronaut.Activate();
     }
+    
+    public override void TransmitterReady()
+    {
+        _nextState = new WinState(_gameStateMachine);
+    }
+
 }

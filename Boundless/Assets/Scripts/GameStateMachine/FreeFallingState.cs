@@ -51,16 +51,10 @@ public class FreeFallingState : GameState
     {
         _gameStateMachine.Astronaut.Activate();
     }
-
-<<<<<<< HEAD
-	public override void AnyKeyPressed()
-	{
-		_nextState = new LostState (_gameStateMachine);
-	}
-=======
+		
     public override void TransmitterReady()
     {
-        _nextState = new TransmitterReadyState(_gameStateMachine);
+        _nextState = new WinState(_gameStateMachine);
     }
 
     public override void AnyKeyPressed()
@@ -75,5 +69,4 @@ public class TransmitterReadyState : GameState
     public TransmitterReadyState(GameStateMachine gameStateMachine) : base(gameStateMachine)
     {
     }
->>>>>>> 24ec9f40ade5b73aa7d7f8ded4c2c4b7ac165e6f
 }

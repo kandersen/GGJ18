@@ -9,6 +9,8 @@ public class GameStateMachine : MonoBehaviour
     public GameplayController GameplayController;
     public MeshRenderer Fade;
 	public AudioSource BackgroundMusic;
+
+    public ParticleSystem DebrisParticleSystem;
     
 	public BeamBehaviour Beam;
 
@@ -19,22 +21,21 @@ public class GameStateMachine : MonoBehaviour
     public ItemFactory ItemFactory;
     public List<ItemBehaviour> DiscardedItems = new List<ItemBehaviour>();
     public List<ItemBehaviour> ActiveItems = new List<ItemBehaviour>();
+    
+    public int RoundsToGo { get; set; }
 
     public void Start()
     {
-        State = new GameplayIntroState(this);
-        State.EnterState();
+        RoundsToGo = 7;
+        State = new GameplayIntroState(this);        
+        State.EnterState();        
     }
     
     public void Update()
     {
         if (State.GetNext() != null)
-<<<<<<< HEAD
-        {
-			State.ExitState ();
-=======
-        {            
->>>>>>> 24ec9f40ade5b73aa7d7f8ded4c2c4b7ac165e6f
+        {          
+            State.ExitState();
             State = State.GetNext();
             State.EnterState();
         }

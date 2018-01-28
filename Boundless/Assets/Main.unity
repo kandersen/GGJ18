@@ -1313,6 +1313,7 @@ MonoBehaviour:
   GameplayController: {fileID: 1319643305}
   Fade: {fileID: 464436540}
   BackgroundMusic: {fileID: 1288038480}
+  DebrisParticleSystem: {fileID: 0}
   Beam: {fileID: 114699307818565220, guid: 2259b7fbbf2ae254a90efa5fb3d9fabc, type: 2}
   SpawnPoints:
   - {fileID: 304273561}
@@ -1740,7 +1741,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1877510515}
   serializedVersion: 5
-  lengthInSec: 4.32
+  lengthInSec: 8.08
   simulationSpeed: 1
   stopAction: 0
   looping: 1
@@ -1793,14 +1794,14 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1637034322
+  randomSeed: -1064074691
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.05
+      scalar: 4.29
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1841,7 +1842,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.39
+      scalar: 3.51
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2353,7 +2354,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.28
+      scalar: 7
       minScalar: 10
       maxCurve:
         serializedVersion: 2

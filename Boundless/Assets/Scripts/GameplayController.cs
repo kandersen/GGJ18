@@ -23,6 +23,7 @@ public class GameplayController : MonoBehaviour
         MoveSignal.AddListener(HandleMove);
         ItemDriftedOffScreenSignal.AddListener(HandleItemDriftedOffScreen);
         ActivateAstronautSignal.AddListener(HandleActivateAstronaut);
+        TransmitterReadySignal.AddListener(HandleTransmitterReady);
     }
 
     private void HandleActivateAstronaut()
@@ -49,9 +50,6 @@ public class GameplayController : MonoBehaviour
     {
         GameStateMachine.State.BottomScreenPressed();
     }
-<<<<<<< HEAD
-    
-=======
 
     private void HandleTransmitterReady()
     {
@@ -59,11 +57,11 @@ public class GameplayController : MonoBehaviour
     }
 
     /*
->>>>>>> 24ec9f40ade5b73aa7d7f8ded4c2c4b7ac165e6f
 	void Update() {
 		if (Input.anyKey) {
 			GameStateMachine.State.AnyKeyPressed ();
 		}
 	}
+	*/
     
 }
