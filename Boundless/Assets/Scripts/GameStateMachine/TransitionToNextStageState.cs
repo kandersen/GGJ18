@@ -47,8 +47,7 @@ public class TransitionToNextStageState : GameState
         }
 
         _gameStateMachine.RoundsToGo--;
-        var emissions = _gameStateMachine.DebrisParticleSystem.emission;
-        emissions.rateOverTime = new ParticleSystem.MinMaxCurve(emissions.rateOverTime.constant - 1.0f);
+        _gameStateMachine.DebrisParticleSystem.DecrementSpawnRate(1.0f/5.0f);
                        
         _nextState = new FreeFallingState(_gameStateMachine);
     }

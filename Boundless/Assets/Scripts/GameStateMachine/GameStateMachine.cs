@@ -10,7 +10,7 @@ public class GameStateMachine : MonoBehaviour
     public MeshRenderer Fade;
 	public AudioSource BackgroundMusic;
 
-    public ParticleSystem DebrisParticleSystem;
+    public DebrisParticleSystems DebrisParticleSystem;
     
 	public BeamBehaviour Beam;
 	public SpriteRenderer Text1;
