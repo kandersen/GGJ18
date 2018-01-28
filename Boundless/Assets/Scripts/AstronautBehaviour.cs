@@ -76,6 +76,15 @@ public class AstronautBehaviour : MonoBehaviour
 
 	public void Activate()
 	{
-		throw new System.NotImplementedException();
+		if (Items.Count == 2)
+		{
+			var left = Items.Pop();
+			var right = Items.Pop();
+			var result = left.Combine(right);
+			foreach (var i in result)
+			{
+				PickUpItem(i);
+			}
+		}
 	}
 }

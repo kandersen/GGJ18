@@ -6,7 +6,7 @@ public class GameplayController : MonoBehaviour
     public Signal<ItemBehaviour> PickItemSignal = new Signal<ItemBehaviour>();
     public Signal<Vector2> MoveSignal = new Signal<Vector2>();
     public Signal<ItemBehaviour> ItemDriftedOffScreenSignal = new Signal<ItemBehaviour>();
-    public Signal ActivateAstronautSignal = new Signal();
+    public Signal ActivateAstronautSignal = new Signal();    
 
     public GameStateMachine GameStateMachine;
 

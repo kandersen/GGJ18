@@ -8,12 +8,12 @@ public class GameStateMachine : MonoBehaviour
     public Transform AstronautStartPosition;
     public GameplayController GameplayController;
     public MeshRenderer Fade;
-
+    
     public List<Transform> SpawnPoints;
     
     public GameState State;
 
-    public ItemBehaviour BatteryPrefab;
+    public ItemFactory ItemFactory;
     public List<ItemBehaviour> DiscardedItems = new List<ItemBehaviour>();
     public List<ItemBehaviour> ActiveItems = new List<ItemBehaviour>();
 

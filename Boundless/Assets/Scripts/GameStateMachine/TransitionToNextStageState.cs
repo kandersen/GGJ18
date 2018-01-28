@@ -43,8 +43,7 @@ public class TransitionToNextStageState : GameState
             
         foreach (var spawnpoint in _gameStateMachine.SpawnPoints)
         {
-            var item = GameObject.Instantiate(_gameStateMachine.BatteryPrefab);
-            item.GameplayController = _gameStateMachine.GameplayController;
+            var item = _gameStateMachine.ItemFactory.SpawnItem();
             item.transform.position = spawnpoint.position;
             _gameStateMachine.ActiveItems.Add(item);
         }
