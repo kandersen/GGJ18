@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 13150b8d6d6f6407c818709c7377cf11
-timeCreated: 1517155562
+timeCreated: 1517156482
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -44,7 +44,7 @@ TextureImporter:
     mipBias: -1
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -56,7 +56,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -101,10 +101,10 @@ TextureImporter:
       name: debris_collection_0
       rect:
         serializedVersion: 2
-        x: 87
-        y: 1499
-        width: 933
-        height: 1420
+        x: 78
+        y: 2028
+        width: 659
+        height: 863
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,10 +115,10 @@ TextureImporter:
       name: debris_collection_1
       rect:
         serializedVersion: 2
-        x: 1156
-        y: 1532
-        width: 993
-        height: 1420
+        x: 927
+        y: 2132
+        width: 589
+        height: 838
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,10 +129,10 @@ TextureImporter:
       name: debris_collection_2
       rect:
         serializedVersion: 2
-        x: 1719
-        y: 1044
-        width: 1083
-        height: 1018
+        x: 1640
+        y: 2105
+        width: 855
+        height: 716
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,10 +143,10 @@ TextureImporter:
       name: debris_collection_3
       rect:
         serializedVersion: 2
-        x: 2233
-        y: 1983
-        width: 1075
-        height: 908
+        x: 2710
+        y: 2167
+        width: 736
+        height: 615
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,10 +157,10 @@ TextureImporter:
       name: debris_collection_4
       rect:
         serializedVersion: 2
-        x: 2906
-        y: 1151
-        width: 1070
-        height: 1043
+        x: 117
+        y: 1078
+        width: 626
+        height: 706
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +171,10 @@ TextureImporter:
       name: debris_collection_5
       rect:
         serializedVersion: 2
-        x: 34
-        y: 454
-        width: 1084
-        height: 908
+        x: 950
+        y: 1187
+        width: 725
+        height: 688
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,10 +185,10 @@ TextureImporter:
       name: debris_collection_6
       rect:
         serializedVersion: 2
-        x: 1258
-        y: 83
-        width: 1077
-        height: 1221
+        x: 1938
+        y: 1140
+        width: 734
+        height: 775
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,10 +199,10 @@ TextureImporter:
       name: debris_collection_7
       rect:
         serializedVersion: 2
-        x: 2516
-        y: 7
-        width: 1081
-        height: 1140
+        x: 3008
+        y: 1243
+        width: 633
+        height: 615
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

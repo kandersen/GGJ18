@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FreeFallingState : GameState
 {        
@@ -65,6 +66,10 @@ public class FreeFallingState : GameState
 		if(Input.GetKeyDown("l")) {
 			Debug.Log ("Lost start");
 			_nextState = new LostState (_gameStateMachine);
+		}
+		if (Input.GetKeyDown ("r")) {
+			PersistentData.GameStarted = false;
+			SceneManager.LoadSceneAsync ("Intro");
 		}
     }
 
