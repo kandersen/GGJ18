@@ -52834,6 +52834,7 @@ GameObject:
   - component: {fileID: 1166828374}
   - component: {fileID: 1166828375}
   - component: {fileID: 1166828372}
+  - component: {fileID: 1166828376}
   m_Layer: 0
   m_Name: Naut
   m_TagString: Naut
@@ -52975,6 +52976,23 @@ MonoBehaviour:
   CombineSuccessSound: {fileID: 8300000, guid: 58f163963d5904ca9810b782157b1ee7, type: 3}
   CombineFailureSound: {fileID: 8300000, guid: c7fcb8c5fad724f7c8cc2eb221f5e53d, type: 3}
   AudioSource: {fileID: 1166828372}
+--- !u!95 &1166828376
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1166828371}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 23922975396f1ef43a86cdf0d402603c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1239122132
 GameObject:
   m_ObjectHideFlags: 0
@@ -53187,6 +53205,7 @@ MonoBehaviour:
   ItemFactory: {fileID: 1319643309}
   DiscardedItems: []
   ActiveItems: []
+  AstroAnimation: {fileID: 1166828376}
 --- !u!82 &1319643308
 AudioSource:
   m_ObjectHideFlags: 0

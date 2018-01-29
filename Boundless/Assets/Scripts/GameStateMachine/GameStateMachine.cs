@@ -26,6 +26,8 @@ public class GameStateMachine : MonoBehaviour
     public ItemFactory ItemFactory;
     public List<ItemBehaviour> DiscardedItems = new List<ItemBehaviour>();
     public List<ItemBehaviour> ActiveItems = new List<ItemBehaviour>();
+
+	public Animator AstroAnimation;
     
     public int RoundsToGo { get; set; }
 
