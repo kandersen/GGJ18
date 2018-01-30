@@ -11,6 +11,9 @@ public class GameStateMachine : MonoBehaviour
 	public AudioSource BackgroundMusic;
 
     public DebrisParticleSystems DebrisParticleSystem;
+	public DebrisParticleSystems DebrisParticleSystemForeground;
+	public DebrisParticleSystems DebrisParticleSystemBackground;
+	public DebrisParticleSystems DebrisParticleSystemRare;
     
 	public BeamBehaviour Beam;
 	public SpriteRenderer Text1;

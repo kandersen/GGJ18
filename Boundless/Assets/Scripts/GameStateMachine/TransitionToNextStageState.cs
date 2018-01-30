@@ -53,7 +53,11 @@ public class TransitionToNextStageState : GameState
         }
 
         _gameStateMachine.RoundsToGo--;
-        _gameStateMachine.DebrisParticleSystem.DecrementSpawnRate(1.0f/6.0f);
+		_gameStateMachine.DebrisParticleSystemBackground.DecrementSpawnRate (1.0f / 7.0f);
+		_gameStateMachine.DebrisParticleSystem.DecrementSpawnRate(1.0f/6.0f);
+		_gameStateMachine.DebrisParticleSystemForeground.DecrementSpawnRate (0.1f/5.0f);
+		_gameStateMachine.DebrisParticleSystemRare.DecrementSpawnRate (0.23f/6.0f);
+
          
         _nextState = new FreeFallingState(_gameStateMachine);
     }
