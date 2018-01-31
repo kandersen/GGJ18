@@ -23,8 +23,13 @@ public class TransitionToNextStageState : GameState
         var background = _gameStateMachine.BackgroundBehaviour;
         alien.InFreeFall = false;
 
-        
         DOTween.To(() => background.speed, x => background.speed = x, 2.0f, 0.5f);
+		float speed = 3.0f;
+		_gameStateMachine.DebrisParticleSystem.SpeedUp (speed, 0.5f);
+		_gameStateMachine.DebrisParticleSystemForeground.SpeedUp (speed, 0.5f);
+		_gameStateMachine.DebrisParticleSystemBackground.SpeedUp (speed, 0.5f);
+		_gameStateMachine.DebrisParticleSystemRare.SpeedUp (speed, 0.5f);
+
         foreach (var item in _gameStateMachine.ActiveItems)
         {
             item.Velocity += 7.0f;
@@ -34,7 +39,12 @@ public class TransitionToNextStageState : GameState
         yield return alien.transform.DOMove(_gameStateMachine.AstronautStartPosition.position, 3.0f).WaitForCompletion();
         _gameStateMachine.Astronaut.JetPackSound.Stop();
 		_gameStateMachine.AstroAnimation.SetBool ("fastFalling", false);
+
         DOTween.To(() => background.speed, x => background.speed = x, 0.2f, 0.5f);
+		_gameStateMachine.DebrisParticleSystem.SpeedUp (1, 0.5f);
+		_gameStateMachine.DebrisParticleSystemForeground.SpeedUp (1, 0.5f);
+		_gameStateMachine.DebrisParticleSystemBackground.SpeedUp (1, 0.5f);
+		_gameStateMachine.DebrisParticleSystemRare.SpeedUp (1, 0.5f);
         
         foreach (var item in _gameStateMachine.ActiveItems)
         {

@@ -9,6 +9,7 @@ public class GameStateMachine : MonoBehaviour
     public GameplayController GameplayController;
     public MeshRenderer Fade;
 	public AudioSource BackgroundMusic;
+	public AudioSource SereneMusic;
 
     public DebrisParticleSystems DebrisParticleSystem;
 	public DebrisParticleSystems DebrisParticleSystemForeground;
