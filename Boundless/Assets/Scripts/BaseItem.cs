@@ -20,7 +20,19 @@ public class BaseItem : MonoBehaviour
 
     public void Attach(ItemBehaviour item)
     {
-        if (first == null)
+		if (second == null && item.AddOn.Class == AddOn.ItemClass.Antenna) {
+			item.transform.parent = JoinPoint2;
+			item.transform.localPosition = Vector3.zero;
+			item.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 30));
+			second = item;
+		}
+		else if (first == null && item.AddOn.Class == AddOn.ItemClass.Switch) {
+			item.transform.parent = JoinPoint1;
+			item.transform.localPosition = Vector3.zero;
+			item.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 10));
+			second = item;
+		} 
+		else if (first == null)
         {
             item.transform.parent = JoinPoint1;
             item.transform.localPosition = Vector3.zero;
@@ -37,10 +49,14 @@ public class BaseItem : MonoBehaviour
 
     public CombinationResult CheckCompletion()
     {
-        if (first == null || second == null)
+        if (first == null || second == null )
         {
             return CombinationResult.NotDone;
         }               
+
+		if (first.AddOn == null || second.AddOn == null) {
+			return CombinationResult.NotDone;
+		}
         
         var switchable = first.AddOn.Class == AddOn.ItemClass.Switch ||
                          second.AddOn.Class == AddOn.ItemClass.Switch;
@@ -49,7 +65,7 @@ public class BaseItem : MonoBehaviour
             return CombinationResult.Dud;
 
         var hasAntenna = first.AddOn.Class == AddOn.ItemClass.Antenna ||
-                         second.AddOn.Class == AddOn.ItemClass.Antenna;
+                         second.AddOn.Class == AddOn.ItemClass.Antenna; 
         
         return hasAntenna ? CombinationResult.Success : CombinationResult.Switchable;
     }

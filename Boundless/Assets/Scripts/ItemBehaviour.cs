@@ -64,6 +64,11 @@ public class ItemBehaviour : MonoBehaviour
             return false;
         }
 
+		if (BaseItem != null && other.BaseItem != null) 
+		{
+			return false;
+		}
+
         if (AddOn != null && other.AddOn != null)
         {
             return false;
