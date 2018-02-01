@@ -39,7 +39,7 @@ public class LostState : GameState
 		var nautStartTrans = _gameStateMachine.Astronaut.transform;
 
 		//tween nautStartTrans to 
-		var startPosition = _gameStateMachine.AstronautStartPosition;
+//		var startPosition = _gameStateMachine.AstronautStartPosition;
 
 		_gameStateMachine.StartCoroutine(LostMusicTransition());
 

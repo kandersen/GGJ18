@@ -28,7 +28,7 @@ public class BaseItem : MonoBehaviour
         }
         else
         {
-            item.transform.parent = JoinPoint1;
+            item.transform.parent = JoinPoint2;
             item.transform.localPosition = Vector3.zero;
             second = item;
         }

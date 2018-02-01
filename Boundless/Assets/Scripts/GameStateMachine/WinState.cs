@@ -17,10 +17,11 @@ public class WinState : GameState
 
     private IEnumerator WinAnimationRoutine()
     {
+		_gameStateMachine.Astronaut.InFreeFall = false;
 		var nautStartTrans = _gameStateMachine.Astronaut.transform;
 
         //tween nautStartTrans to 
-        var startPosition = _gameStateMachine.AstronautStartPosition;
+//        var startPosition = _gameStateMachine.AstronautStartPosition;
 
 		_gameStateMachine.BackgroundMusic.DOFade (0, 3);
 		yield return nautStartTrans.DOMove (Vector2.zero, 3).WaitForCompletion();
