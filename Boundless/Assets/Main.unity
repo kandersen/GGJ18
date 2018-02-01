@@ -38501,9 +38501,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1968597043
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 95571dcbd2c1839408f9ac941127a6c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101724,6 +101724,30 @@ MonoBehaviour:
   - {fileID: 114309492524734340, guid: 37e083bc97fc57b4bbd856ade95f9cd2, type: 2}
   - {fileID: 114690409469632088, guid: e10c0aa4af48eb240a30201c970eb8c7, type: 2}
   - {fileID: 114690409469632088, guid: 0fb5d9d865e3f624fbff033d9e50e6fe, type: 2}
+  GarbagePrefabs:
+  - {fileID: 114309492524734340, guid: cff8c9e05e066eb498c12fe52a20664a, type: 2}
+  - {fileID: 114309492524734340, guid: cd47b2abfdfbfdf4887274ddfc40117d, type: 2}
+  - {fileID: 114309492524734340, guid: e978c7f1e7dd8d14bae4f8314448bc4e, type: 2}
+  - {fileID: 114309492524734340, guid: 0a6ad07d31d177c4e8d9c88b098b3175, type: 2}
+  - {fileID: 114309492524734340, guid: 2de01a5b5fab29248801128cb1a31783, type: 2}
+  - {fileID: 114309492524734340, guid: 99935a816571b1b488e93e06f4e8c548, type: 2}
+  - {fileID: 114309492524734340, guid: 06934ad570dded04caff827c30068bf9, type: 2}
+  - {fileID: 114309492524734340, guid: cd3f690658db095409cb831be7cbfaf9, type: 2}
+  - {fileID: 114309492524734340, guid: 6d8a2441fa0116e4589f86f5438b4606, type: 2}
+  ButtonPrefabs:
+  - {fileID: 114309492524734340, guid: 37e083bc97fc57b4bbd856ade95f9cd2, type: 2}
+  - {fileID: 114309492524734340, guid: 11d0d7ee490e5214ba520702d3081c66, type: 2}
+  - {fileID: 114309492524734340, guid: 82823e0bf7c194c3f8c2fb4e1398d0cb, type: 2}
+  AntennaPrefabs:
+  - {fileID: 114778311344515346, guid: 635271f7c8e464082b940b0055386eb5, type: 2}
+  - {fileID: 114690409469632088, guid: 0fb5d9d865e3f624fbff033d9e50e6fe, type: 2}
+  - {fileID: 114690409469632088, guid: 65c9f1e3effc84d249c0ce0d8a9212a9, type: 2}
+  - {fileID: 114690409469632088, guid: e10c0aa4af48eb240a30201c970eb8c7, type: 2}
+  PowerSourcePrefabs:
+  - {fileID: 114440645059979570, guid: dc43864a6e5b0419bb8b6ec5a51808f2, type: 2}
+  - {fileID: 114440645059979570, guid: 92af3e964f3f85d4883ecade1cfeb1db, type: 2}
+  - {fileID: 114440645059979570, guid: bd564fa57bdb9c9478e6bce35b62dcd9, type: 2}
+  - {fileID: 114440645059979570, guid: cdaaa7fbe4a5f1a4a9afdfa8bfb5705a, type: 2}
 --- !u!1 &1328351140
 GameObject:
   m_ObjectHideFlags: 0
