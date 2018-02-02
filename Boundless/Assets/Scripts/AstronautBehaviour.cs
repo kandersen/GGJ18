@@ -96,4 +96,28 @@ public class AstronautBehaviour : MonoBehaviour
 			GameplayController.GameStateMachine.AudioController.PlayCombineFailure();				
         }
     }
+
+	public ItemBehaviour GetLeftItem() {
+		if (Items.Count > 1) {
+			ItemBehaviour temp = Items.Pop ();
+			ItemBehaviour result = Items.Pop ();
+			Items.Push (result);
+			Items.Push (temp);
+			return result;
+		}
+		if (Items.Count > 0) {
+			ItemBehaviour result = Items.Pop ();
+			Items.Push (result);
+			return result;
+		}
+		return null;
+	}
+	public ItemBehaviour GetRightItem() {
+		if (Items.Count > 1) {
+			ItemBehaviour result = Items.Pop ();
+			Items.Push (result);
+			return result;
+		}
+		return null;
+	}
 }
