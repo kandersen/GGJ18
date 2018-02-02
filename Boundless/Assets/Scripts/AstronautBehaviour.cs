@@ -16,9 +16,6 @@ public class AstronautBehaviour : MonoBehaviour
     public Transform LeftHand;
     public Transform RightHand;
 
-    public AstronautAudio AstronautAudio;
-    public JetpackSound JetPackSound;
-	
     public void Start()
     {
         ColliderEventReporter.OnClickedSignal.AddListener(HandleOnClick);
@@ -86,29 +83,14 @@ public class AstronautBehaviour : MonoBehaviour
             var result = left.Combine(right);
             var status = result.BaseItem.CheckCompletion();
             Debug.Log(status);
-            if (status == BaseItem.CombinationResult.Success)
-            {
-                PickUpItem(result);
-                AstronautAudio.PlayCombineSuccess();            
-                GameplayController.TransmitterReadySignal.Dispatch();
-            } else if (status == BaseItem.CombinationResult.Dud)
-            {
-                result.State = ItemBehaviour.ItemState.Dropped;
-                result.transform.parent = null;
-                result.DriftBehaviour.enabled = true;
-                GameplayController.GameStateMachine.ActiveItems.Add(result);
-                AstronautAudio.PlayCombineFailure();
-            }
-            else
-            {
-                PickUpItem(result);
-            }
+            PickUpItem(result);
+            
         }
         else
         {
             PickUpItem(left);
             PickUpItem(right);
-            AstronautAudio.PlayCombineFailure();				
+			GameplayController.GameStateMachine.AudioController.PlayCombineFailure();				
         }
     }
 }

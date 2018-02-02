@@ -3,6 +3,7 @@
 public class AddOn : MonoBehaviour
 {
     public ItemBehaviour Item;
+	public BaseItem Base;
     public enum ItemClass
     {
         Switch = 0,

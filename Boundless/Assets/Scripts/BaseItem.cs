@@ -25,24 +25,28 @@ public class BaseItem : MonoBehaviour
 			item.transform.localPosition = Vector3.zero;
 			item.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 30));
 			second = item;
+			item.AddOn.Base = this;
 		}
 		else if (first == null && item.AddOn.Class == AddOn.ItemClass.Switch) {
 			item.transform.parent = JoinPoint1;
 			item.transform.localPosition = Vector3.zero;
 			item.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 10));
-			second = item;
+			first = item;
+			item.AddOn.Base = this;
 		} 
 		else if (first == null)
         {
             item.transform.parent = JoinPoint1;
             item.transform.localPosition = Vector3.zero;
             first = item;
+			item.AddOn.Base = this;
         }
         else
         {
             item.transform.parent = JoinPoint2;
             item.transform.localPosition = Vector3.zero;
             second = item;
+			item.AddOn.Base = this;
         }
       
     }

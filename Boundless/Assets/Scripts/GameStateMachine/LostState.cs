@@ -20,9 +20,9 @@ public class LostState : GameState
 	}
 
 	private IEnumerator LostMusicTransition() {
-		yield return _gameStateMachine.BackgroundMusic.DOFade (0f, 10).WaitForCompletion();
+		yield return _gameStateMachine.AudioController.FadeBackgroundMusic (10);
 		yield return new WaitForSeconds (2f);
-		_gameStateMachine.SereneMusic.Play ();
+		_gameStateMachine.AudioController.PlayTheme ();
 	}
 
 	private void StopDebris() {

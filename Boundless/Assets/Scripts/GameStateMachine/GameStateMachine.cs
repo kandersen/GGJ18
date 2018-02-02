@@ -8,8 +8,7 @@ public class GameStateMachine : MonoBehaviour
     public Transform AstronautStartPosition;
     public GameplayController GameplayController;
     public MeshRenderer Fade;
-	public AudioSource BackgroundMusic;
-	public AudioSource SereneMusic;
+
 
     public DebrisParticleSystems DebrisParticleSystem;
 	public DebrisParticleSystems DebrisParticleSystemForeground;
@@ -22,6 +21,8 @@ public class GameStateMachine : MonoBehaviour
 	public SpriteRenderer Text3;
 	public SpriteRenderer Text4;
 	public SpriteRenderer Text5;
+
+	public AudioController AudioController;
 
     public List<Transform> SpawnPoints;
     

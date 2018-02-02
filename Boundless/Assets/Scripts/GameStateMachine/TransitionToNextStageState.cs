@@ -35,9 +35,9 @@ public class TransitionToNextStageState : GameState
             item.Velocity += 7.0f;
         }        
 		_gameStateMachine.AstroAnimation.SetBool ("fastFalling", true);
-        _gameStateMachine.Astronaut.JetPackSound.Play();
+		_gameStateMachine.AudioController.PlayJetPackSound();
         yield return alien.transform.DOMove(_gameStateMachine.AstronautStartPosition.position, 3.0f).WaitForCompletion();
-        _gameStateMachine.Astronaut.JetPackSound.Stop();
+		_gameStateMachine.AudioController.StopJetPackSound ();
 		_gameStateMachine.AstroAnimation.SetBool ("fastFalling", false);
 
         DOTween.To(() => background.speed, x => background.speed = x, 0.2f, 0.5f);
