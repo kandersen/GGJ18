@@ -42,6 +42,16 @@ public class BaseItem : MonoBehaviour
 		float init = FlashRenderer.color.a;
 		FlashRenderer.color = new Color (1, 1, 1, 0);
 		FlashRenderer.enabled = true;
+		if (first != null && first.AddOn.FlashRenderer != null) {
+			first.AddOn.FlashRenderer.color = new Color (1, 1, 1, 0);
+			first.AddOn.FlashRenderer.enabled = true;
+			first.AddOn.FlashRenderer.DOFade (init, 0.1f);
+		}
+		if (second != null && second.AddOn.FlashRenderer != null) {
+			second.AddOn.FlashRenderer.color = new Color (1, 1, 1, 0);
+			second.AddOn.FlashRenderer.enabled = true;
+			second.AddOn.FlashRenderer.DOFade (init, 0.1f);
+		}
 		yield return FlashRenderer.DOFade(init,0.1f).WaitForCompletion();
 	}
 
@@ -53,6 +63,12 @@ public class BaseItem : MonoBehaviour
 		Debug.Log ("Flashing stop");
 		if (_flashing != null) {
 			StopCoroutine (_flashing);
+		}
+		if (first != null) {
+			first.AddOn.FlashRenderer.DOFade (0, 0.1f);
+		}
+		if (second != null) {
+			second.AddOn.FlashRenderer.DOFade (0, 0.1f);
 		}
 		yield return FlashRenderer.DOFade (0, 0.1f).WaitForCompletion();
 		FlashRenderer.enabled = false;

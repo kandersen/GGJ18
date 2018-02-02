@@ -34,7 +34,7 @@ public class ItemBehaviour : MonoBehaviour
 		} else if (State == ItemState.Held) {
 			if (BaseItem == null && AddOn.Base != null && AddOn.Base.Item.State == ItemState.Held) {
 				AddOn.Base.Item.HandleOnClick ();
-			} else {
+			} else if(BaseItem != null) {
 				BaseItem.CombinationResult status = BaseItem.CheckCompletion ();
 				if (status == BaseItem.CombinationResult.Success) {
 //u					GameplayController.AudioControlle.PlayCombineSuccess();
