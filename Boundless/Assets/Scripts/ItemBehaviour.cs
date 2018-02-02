@@ -37,15 +37,18 @@ public class ItemBehaviour : MonoBehaviour
 			} else {
 				BaseItem.CombinationResult status = BaseItem.CheckCompletion ();
 				if (status == BaseItem.CombinationResult.Success) {
-//					GameplayController.AudioControlle.PlayCombineSuccess();            
+//u					GameplayController.AudioControlle.PlayCombineSuccess();
+					BaseItem.StopFlashing();
 					GameplayController.TransmitterReadySignal.Dispatch ();
 				} else if (status == BaseItem.CombinationResult.Dud) {
+					BaseItem.StopFlashing();
 					State = ItemBehaviour.ItemState.Dropped;
 					transform.parent = null;
 					DriftBehaviour.enabled = true;
 					GameplayController.GameStateMachine.ActiveItems.Add (this);
 					//GameplayController.AudioController.PlayCombineFailure();
 				} else if (status == BaseItem.CombinationResult.Switchable) {
+					BaseItem.StopFlashing();
 					State = ItemBehaviour.ItemState.Dropped;
 					transform.parent = null;
 					DriftBehaviour.enabled = true;

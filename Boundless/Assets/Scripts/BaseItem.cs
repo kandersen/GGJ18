@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
+using DG.Tweening;
+using System.Collections;
 
 public class BaseItem : MonoBehaviour
 {
     public ItemBehaviour Item;
     
+	public SpriteRenderer FlashRenderer;
+
     public Transform JoinPoint1;
     public Transform JoinPoint2;
+
+	private Coroutine _flashing;
 
     public enum CombinationResult
     {
@@ -17,6 +23,40 @@ public class BaseItem : MonoBehaviour
 
     public ItemBehaviour first;
     public ItemBehaviour second;
+
+	public void Start() {
+		if (FlashRenderer != null) {
+			FlashRenderer.enabled = false;
+		}
+	}
+
+	public void StartFlashing() {
+		_flashing = StartCoroutine (StartFlashingAux ());
+	}
+
+	private IEnumerator StartFlashingAux() {
+		Debug.Log ("Flashing start");
+		if (_flashing != null) {
+			StopCoroutine (_flashing);
+		}
+		float init = FlashRenderer.color.a;
+		FlashRenderer.color = new Color (1, 1, 1, 0);
+		FlashRenderer.enabled = true;
+		yield return FlashRenderer.DOFade(init,0.1f).WaitForCompletion();
+	}
+
+	public void StopFlashing() {
+		_flashing = StartCoroutine (StopFlashingAux());
+	}
+
+	public IEnumerator StopFlashingAux() {
+		Debug.Log ("Flashing stop");
+		if (_flashing != null) {
+			StopCoroutine (_flashing);
+		}
+		yield return FlashRenderer.DOFade (0, 0.1f).WaitForCompletion();
+		FlashRenderer.enabled = false;
+	}
 
     public void Attach(ItemBehaviour item)
     {

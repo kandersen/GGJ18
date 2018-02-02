@@ -83,6 +83,9 @@ public class AstronautBehaviour : MonoBehaviour
             var result = left.Combine(right);
             var status = result.BaseItem.CheckCompletion();
             Debug.Log(status);
+			if (status != BaseItem.CombinationResult.NotDone) {
+				result.BaseItem.StartFlashing ();
+			}
             PickUpItem(result);
             
         }
