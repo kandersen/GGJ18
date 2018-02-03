@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class AstronautBehaviour : MonoBehaviour
@@ -88,6 +89,7 @@ public class AstronautBehaviour : MonoBehaviour
             Debug.Log(status);
 			if (status != BaseItem.CombinationResult.NotDone) {
 				result.BaseItem.StartFlashing ();
+				StartCoroutine (TransmitterReadySoundDelayed ());
 			}
             PickUpItem(result);
             
@@ -99,6 +101,12 @@ public class AstronautBehaviour : MonoBehaviour
 			GameplayController.GameStateMachine.AudioController.PlayCombineFailure();				
         }
     }
+
+	private IEnumerator TransmitterReadySoundDelayed() {
+		yield return new WaitForSeconds (0.3f);
+		GameplayController.GameStateMachine.AudioController.PlayTransmitterReady ();
+
+	}
 
 	public ItemBehaviour GetLeftItem() {
 		if (Items.Count > 1) {

@@ -10,8 +10,10 @@ public class AudioController : MonoBehaviour {
 	public AudioClip CombineSuccessSound;
 	public AudioClip CombineFailureSound;
 	public AudioClip TransmitSound;
+	public AudioClip TransmitterReadySound;
 
 	public AudioSource BackgroundMusic;
+	public AudioSource BackgroundMusicv2;
 	public AudioSource SereneMusic;
 
 	public JetpackSound JetPackSound;
@@ -23,8 +25,7 @@ public class AudioController : MonoBehaviour {
 	}
 
 	public IEnumerator FadeBackgroundMusic(float fadeTime) {
-		yield return BackgroundMusic.DOFade (0, fadeTime).WaitForCompletion();
-		yield return null;
+		yield return BackgroundMusicv2.DOFade (0, fadeTime).WaitForCompletion();
 	}
 
 	public void PlayJetPackSound() {
@@ -57,5 +58,9 @@ public class AudioController : MonoBehaviour {
 
 	public void PlayTransmit() {
 		AudioSource.PlayOneShot (TransmitSound);
+	}
+
+	public void PlayTransmitterReady(){
+		AudioSource.PlayOneShot (TransmitterReadySound);
 	}
 }
