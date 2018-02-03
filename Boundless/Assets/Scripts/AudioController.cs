@@ -25,8 +25,7 @@ public class AudioController : MonoBehaviour {
 	}
 
 	public IEnumerator FadeBackgroundMusic(float fadeTime) {
-		yield return BackgroundMusic.DOFade (0, fadeTime).WaitForCompletion();
-		yield return null;
+		yield return BackgroundMusicv2.DOFade (0, fadeTime).WaitForCompletion();
 	}
 
 	public void PlayJetPackSound() {

@@ -57,7 +57,7 @@ public class TransitionToNextStageState : GameState
             var item = _gameStateMachine.ItemFactory.SpawnItem();
 			item.transform.position = new Vector3(Random.value * 20f - 10.0f, -8.0f - 3 * Random.value, 0f);
 			Debug.Log (item.Velocity);
-			item.Velocity = 2 + 2f * Random.value;
+			item.Velocity = 2 + 1.2f * Random.value;
             _gameStateMachine.ActiveItems.Add(item);
         }
 
