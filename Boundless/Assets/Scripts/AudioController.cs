@@ -9,6 +9,7 @@ public class AudioController : MonoBehaviour {
 	public AudioClip FlickSwitchSound;
 	public AudioClip CombineSuccessSound;
 	public AudioClip CombineFailureSound;
+	public AudioClip TransmitSound;
 
 	public AudioSource BackgroundMusic;
 	public AudioSource SereneMusic;
@@ -52,5 +53,9 @@ public class AudioController : MonoBehaviour {
 	public void PlayCombineFailure()
 	{
 		AudioSource.PlayOneShot(CombineFailureSound);
+	}
+
+	public void PlayTransmit() {
+		AudioSource.PlayOneShot (TransmitSound);
 	}
 }

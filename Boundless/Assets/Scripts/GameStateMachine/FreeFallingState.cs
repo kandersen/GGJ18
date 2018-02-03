@@ -67,6 +67,10 @@ public class FreeFallingState : GameState
 			Debug.Log ("Lost start");
 			_nextState = new LostState (_gameStateMachine);
 		}
+		if(Input.GetKeyDown("t")) {
+			Debug.Log ("Transmit");
+			_nextState = new TriggerTransmitState (_gameStateMachine);
+		}
 		if (Input.GetKeyDown ("r")) {
 			PersistentData.GameStarted = false;
 			SceneManager.LoadSceneAsync ("Intro");

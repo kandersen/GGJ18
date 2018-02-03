@@ -16,6 +16,9 @@ public class AstronautBehaviour : MonoBehaviour
     public Transform LeftHand;
     public Transform RightHand;
 
+	public SpriteRenderer LeftArmRenderer;
+	public SpriteRenderer RightArmRenderer;
+
     public void Start()
     {
         ColliderEventReporter.OnClickedSignal.AddListener(HandleOnClick);

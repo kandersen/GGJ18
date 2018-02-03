@@ -94554,6 +94554,8 @@ MonoBehaviour:
   ColliderEventReporter: {fileID: 1751405127}
   LeftHand: {fileID: 896891951}
   RightHand: {fileID: 1955784932}
+  LeftArmRenderer: {fileID: 871426500}
+  RightArmRenderer: {fileID: 89053636}
 --- !u!95 &1166828376
 Animator:
   serializedVersion: 3
@@ -101735,11 +101737,11 @@ MonoBehaviour:
   GameplayController: {fileID: 1319643305}
   GarbagePrefabs:
   - {fileID: 114309492524734340, guid: cff8c9e05e066eb498c12fe52a20664a, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114309492524734340, guid: 434bd2e54959ce8488371dba1b9fedb0, type: 2}
+  - {fileID: 114309492524734340, guid: f6b72bc36e771d443ac2ba70ed6bc22d, type: 2}
+  - {fileID: 114309492524734340, guid: 1fbdc6464dc520046a4e1638090284f4, type: 2}
+  - {fileID: 114309492524734340, guid: d92710fbcf1d2af4690aee6ae34cef2a, type: 2}
+  - {fileID: 114309492524734340, guid: fe16e097aa42e97419f9cb1aa3707236, type: 2}
   - {fileID: 114309492524734340, guid: 06934ad570dded04caff827c30068bf9, type: 2}
   - {fileID: 114309492524734340, guid: cd3f690658db095409cb831be7cbfaf9, type: 2}
   - {fileID: 114309492524734340, guid: 6d8a2441fa0116e4589f86f5438b4606, type: 2}
