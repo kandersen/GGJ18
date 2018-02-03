@@ -10,8 +10,10 @@ public class AudioController : MonoBehaviour {
 	public AudioClip CombineSuccessSound;
 	public AudioClip CombineFailureSound;
 	public AudioClip TransmitSound;
+	public AudioClip TransmitterReadySound;
 
 	public AudioSource BackgroundMusic;
+	public AudioSource BackgroundMusicv2;
 	public AudioSource SereneMusic;
 
 	public JetpackSound JetPackSound;
@@ -57,5 +59,9 @@ public class AudioController : MonoBehaviour {
 
 	public void PlayTransmit() {
 		AudioSource.PlayOneShot (TransmitSound);
+	}
+
+	public void PlayTransmitterReady(){
+		AudioSource.PlayOneShot (TransmitterReadySound);
 	}
 }
