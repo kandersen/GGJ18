@@ -17721,7 +17721,7 @@ MonoBehaviour:
   TransmitterReadySound: {fileID: 8300000, guid: 9964622e5b426b74ab3dbf83f6c7de82,
     type: 3}
   BackgroundMusic: {fileID: 1288038482}
-  BackgroundMusicv2: {fileID: 0}
+  BackgroundMusicv2: {fileID: 1986965109}
   SereneMusic: {fileID: 765974739}
   JetPackSound: {fileID: 743136537}
   AudioSource: {fileID: 233515704}
