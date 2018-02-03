@@ -17716,6 +17716,7 @@ MonoBehaviour:
   FlickSwitchSound: {fileID: 8300000, guid: 6a3266deac03c4f17b66efaa048a46bc, type: 3}
   CombineSuccessSound: {fileID: 8300000, guid: 58f163963d5904ca9810b782157b1ee7, type: 3}
   CombineFailureSound: {fileID: 8300000, guid: c7fcb8c5fad724f7c8cc2eb221f5e53d, type: 3}
+  TransmitSound: {fileID: 8300000, guid: 7b017bd606889c3418337fcf7a860a34, type: 3}
   BackgroundMusic: {fileID: 1288038482}
   SereneMusic: {fileID: 765974739}
   JetPackSound: {fileID: 743136537}

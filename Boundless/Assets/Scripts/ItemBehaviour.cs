@@ -36,23 +36,9 @@ public class ItemBehaviour : MonoBehaviour
 				AddOn.Base.Item.HandleOnClick ();
 			} else if(BaseItem != null) {
 				BaseItem.CombinationResult status = BaseItem.CheckCompletion ();
-				if (status == BaseItem.CombinationResult.Success) {
-//u					GameplayController.AudioControlle.PlayCombineSuccess();
+				if (status != BaseItem.CombinationResult.NotDone) {
 					BaseItem.StopFlashing();
 					GameplayController.TransmitterReadySignal.Dispatch ();
-				} else if (status == BaseItem.CombinationResult.Dud) {
-					BaseItem.StopFlashing();
-					State = ItemBehaviour.ItemState.Dropped;
-					transform.parent = null;
-					DriftBehaviour.enabled = true;
-					GameplayController.GameStateMachine.ActiveItems.Add (this);
-					//GameplayController.AudioController.PlayCombineFailure();
-				} else if (status == BaseItem.CombinationResult.Switchable) {
-					BaseItem.StopFlashing();
-					State = ItemBehaviour.ItemState.Dropped;
-					transform.parent = null;
-					DriftBehaviour.enabled = true;
-					GameplayController.GameStateMachine.ActiveItems.Add(this);
 				}
 			}
 		}
