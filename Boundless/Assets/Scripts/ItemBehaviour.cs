@@ -31,7 +31,17 @@ public class ItemBehaviour : MonoBehaviour
         if (State == ItemState.Drifting)
         {
             GameplayController.PickItemSignal.Dispatch(this);            
-        }
+		} else if (State == ItemState.Held) {
+			if (BaseItem == null && AddOn.Base != null && AddOn.Base.Item.State == ItemState.Held) {
+				AddOn.Base.Item.HandleOnClick ();
+			} else if(BaseItem != null) {
+				BaseItem.CombinationResult status = BaseItem.CheckCompletion ();
+				if (status != BaseItem.CombinationResult.NotDone) {
+					BaseItem.StopFlashing();
+					GameplayController.TransmitterReadySignal.Dispatch ();
+				}
+			}
+		}
     }
 
     public void Update()
@@ -63,6 +73,11 @@ public class ItemBehaviour : MonoBehaviour
         {
             return false;
         }
+
+		if (BaseItem != null && other.BaseItem != null) 
+		{
+			return false;
+		}
 
         if (AddOn != null && other.AddOn != null)
         {

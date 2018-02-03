@@ -22,16 +22,29 @@ public class TransitionToNextStageState : GameState
         var alien = _gameStateMachine.Astronaut;
         var background = _gameStateMachine.BackgroundBehaviour;
         alien.InFreeFall = false;
-        
+
         DOTween.To(() => background.speed, x => background.speed = x, 2.0f, 0.5f);
+		float speed = 3.0f;
+		_gameStateMachine.DebrisParticleSystem.SpeedUp (speed, 0.5f);
+		_gameStateMachine.DebrisParticleSystemForeground.SpeedUp (speed, 0.5f);
+		_gameStateMachine.DebrisParticleSystemBackground.SpeedUp (speed, 0.5f);
+		_gameStateMachine.DebrisParticleSystemRare.SpeedUp (speed, 0.5f);
+
         foreach (var item in _gameStateMachine.ActiveItems)
         {
-            item.Velocity = 8.0f;
+            item.Velocity += 7.0f;
         }        
-        _gameStateMachine.Astronaut.JetPackSound.Play();
+		_gameStateMachine.AstroAnimation.SetBool ("fastFalling", true);
+		_gameStateMachine.AudioController.PlayJetPackSound();
         yield return alien.transform.DOMove(_gameStateMachine.AstronautStartPosition.position, 3.0f).WaitForCompletion();
-        _gameStateMachine.Astronaut.JetPackSound.Stop();
+		_gameStateMachine.AudioController.StopJetPackSound ();
+		_gameStateMachine.AstroAnimation.SetBool ("fastFalling", false);
+
         DOTween.To(() => background.speed, x => background.speed = x, 0.2f, 0.5f);
+		_gameStateMachine.DebrisParticleSystem.SpeedUp (1, 0.5f);
+		_gameStateMachine.DebrisParticleSystemForeground.SpeedUp (1, 0.5f);
+		_gameStateMachine.DebrisParticleSystemBackground.SpeedUp (1, 0.5f);
+		_gameStateMachine.DebrisParticleSystemRare.SpeedUp (1, 0.5f);
         
         foreach (var item in _gameStateMachine.ActiveItems)
         {
@@ -42,13 +55,19 @@ public class TransitionToNextStageState : GameState
         for (var i = 0; i < _gameStateMachine.RoundsToGo; i++)
         {
             var item = _gameStateMachine.ItemFactory.SpawnItem();
-            item.transform.position = new Vector3(Random.value * 14f - 7.0f, -8.0f, 0f);
+			item.transform.position = new Vector3(Random.value * 20f - 10.0f, -8.0f - 3 * Random.value, 0f);
+			Debug.Log (item.Velocity);
+			item.Velocity = 2 + 2f * Random.value;
             _gameStateMachine.ActiveItems.Add(item);
         }
 
         _gameStateMachine.RoundsToGo--;
-        _gameStateMachine.DebrisParticleSystem.DecrementSpawnRate(1.0f/5.0f);
-                       
+		_gameStateMachine.DebrisParticleSystemBackground.DecrementSpawnRate (1.0f / 7.0f);
+		_gameStateMachine.DebrisParticleSystem.DecrementSpawnRate(1.0f/6.0f);
+		_gameStateMachine.DebrisParticleSystemForeground.DecrementSpawnRate (0.1f/5.0f);
+		_gameStateMachine.DebrisParticleSystemRare.DecrementSpawnRate (0.23f/6.0f);
+
+         
         _nextState = new FreeFallingState(_gameStateMachine);
     }
 }

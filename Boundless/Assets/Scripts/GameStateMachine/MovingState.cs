@@ -19,7 +19,7 @@ public class MovingState : GameState
     public override void EnterState()
     {
         _coroutine = _gameStateMachine.StartCoroutine(MoveRoutine());
-        _gameStateMachine.Astronaut.JetPackSound.Play();
+		_gameStateMachine.AudioController.PlayJetPackSound();
     }
 
     private IEnumerator MoveRoutine()
@@ -33,7 +33,7 @@ public class MovingState : GameState
             yield return null;
             delta = _target - _gameStateMachine.Astronaut.transform.position;
         }
-        _gameStateMachine.Astronaut.JetPackSound.Stop();
+		_gameStateMachine.AudioController.StopJetPackSound();
         _nextState = new FreeFallingState(_gameStateMachine);
     }
 
@@ -76,7 +76,7 @@ public class MovingState : GameState
     
     public override void TransmitterReady()
     {
-        _nextState = new WinState(_gameStateMachine);
+		_nextState = new TriggerTransmitState(_gameStateMachine);
     }
 
 }

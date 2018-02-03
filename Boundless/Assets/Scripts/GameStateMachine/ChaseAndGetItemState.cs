@@ -14,7 +14,7 @@ public class ChaseAndGetItemState : GameState
 
     public override void EnterState()
     {
-        _gameStateMachine.Astronaut.JetPackSound.Play();
+		_gameStateMachine.AudioController.PlayJetPackSound();
         _coroutine = _gameStateMachine.StartCoroutine(ChaseRoutine());
     }
 
@@ -28,9 +28,9 @@ public class ChaseAndGetItemState : GameState
             yield return null;
             delta = _target.transform.position - _gameStateMachine.Astronaut.transform.position;
         }      
-        _gameStateMachine.Astronaut.JetPackSound.Stop();        
+		_gameStateMachine.AudioController.StopJetPackSound ();    
         var droppedItem = _gameStateMachine.Astronaut.PickUpItem(_target);
-        _gameStateMachine.Astronaut.AstronautAudio.PlayPickupBattery();
+		_gameStateMachine.AudioController.PlayPickupBattery();
         if (droppedItem != null)
         {
             _gameStateMachine.ActiveItems.Add(droppedItem);
@@ -52,6 +52,7 @@ public class ChaseAndGetItemState : GameState
             _gameStateMachine.StopCoroutine(_coroutine);
             _nextState = new ChaseAndGetItemState(item, _gameStateMachine);
         }
+			
     }
 
     public override void ItemDriftedOff(ItemBehaviour item)
@@ -82,7 +83,7 @@ public class ChaseAndGetItemState : GameState
     
     public override void TransmitterReady()
     {
-        _nextState = new WinState(_gameStateMachine);
+		_nextState = new TriggerTransmitState(_gameStateMachine);
     }
 
 }

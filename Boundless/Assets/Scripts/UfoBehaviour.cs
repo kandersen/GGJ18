@@ -28,6 +28,8 @@ public class UfoBehaviour : MonoBehaviour {
 	private Coroutine Scene = null;
 	private Coroutine Beam = null;
 	 
+	private bool canStart = false;
+
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("Game started: " + PersistentData.GameStarted);
@@ -36,6 +38,7 @@ public class UfoBehaviour : MonoBehaviour {
 		} else {
 			BeamLineRenderer.color = new Color (1, 1, 1, 0);
 			BeamRenderer.color = new Color (1, 1, 1, 0);
+			canStart = true;
 		}
 		AstronautRB2D.simulated = false;
 		Cer.OnTriggerSignal.AddListener (HandleTrigger);
@@ -46,7 +49,7 @@ public class UfoBehaviour : MonoBehaviour {
 
 	void OnMouseUpAsButton () {
 		Debug.Log("Yes, on mouse up as button works.");
-		if (Scene == null) {
+		if (Scene == null  && canStart) {
 			Scene = StartCoroutine (AndAction ());
 		}
 
@@ -64,6 +67,8 @@ public class UfoBehaviour : MonoBehaviour {
 
 		BeamLineRenderer.color = new Color (1, 1, 1, 1);
 		BeamRenderer.color = new Color (1, 1, 1, 0.5f);
+
+
 
 		yield return new WaitForSeconds (1f);
 		AstronautRenderer.enabled = true;
@@ -87,11 +92,12 @@ public class UfoBehaviour : MonoBehaviour {
 		AstronautRenderer.gameObject.transform.localScale = astroScale;
 		AstronautRenderer.sortingOrder = astroSort;
 
+
 		DOTween.ToAlpha (() => BeamLineRenderer.color, x => BeamLineRenderer.color = x, 0, 0.2f);
 		DOTween.ToAlpha (() => BeamRenderer.color, x => BeamRenderer.color = x, 0, 0.2f);
 		BeamLineRenderer.enabled = false;
 		BeamRenderer.enabled = false;
-
+		canStart = true;
 		yield return null;
 	}
 

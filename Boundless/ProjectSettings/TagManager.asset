@@ -43,6 +43,9 @@ TagManager:
   - name: Background
     uniqueID: 3079805603
     locked: 0
+  - name: Debris background
+    uniqueID: 3277696809
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -51,4 +54,10 @@ TagManager:
     locked: 0
   - name: Attachment
     uniqueID: 1968597043
+    locked: 0
+  - name: Debris Foreground
+    uniqueID: 1874585513
+    locked: 0
+  - name: Fade
+    uniqueID: 1486570793
     locked: 0

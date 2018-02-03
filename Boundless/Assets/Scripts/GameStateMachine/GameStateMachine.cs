@@ -8,9 +8,12 @@ public class GameStateMachine : MonoBehaviour
     public Transform AstronautStartPosition;
     public GameplayController GameplayController;
     public MeshRenderer Fade;
-	public AudioSource BackgroundMusic;
+
 
     public DebrisParticleSystems DebrisParticleSystem;
+	public DebrisParticleSystems DebrisParticleSystemForeground;
+	public DebrisParticleSystems DebrisParticleSystemBackground;
+	public DebrisParticleSystems DebrisParticleSystemRare;
     
 	public BeamBehaviour Beam;
 	public SpriteRenderer Text1;
@@ -19,6 +22,8 @@ public class GameStateMachine : MonoBehaviour
 	public SpriteRenderer Text4;
 	public SpriteRenderer Text5;
 
+	public AudioController AudioController;
+
     public List<Transform> SpawnPoints;
     
     public GameState State;
@@ -26,6 +31,8 @@ public class GameStateMachine : MonoBehaviour
     public ItemFactory ItemFactory;
     public List<ItemBehaviour> DiscardedItems = new List<ItemBehaviour>();
     public List<ItemBehaviour> ActiveItems = new List<ItemBehaviour>();
+
+	public Animator AstroAnimation;
     
     public int RoundsToGo { get; set; }
 

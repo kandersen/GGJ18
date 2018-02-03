@@ -54,7 +54,7 @@ public class FreeFallingState : GameState
 		
     public override void TransmitterReady()
     {
-        _nextState = new WinState(_gameStateMachine);
+		_nextState = new TriggerTransmitState(_gameStateMachine);
     }
 
     public override void AnyKeyPressed()
@@ -66,6 +66,10 @@ public class FreeFallingState : GameState
 		if(Input.GetKeyDown("l")) {
 			Debug.Log ("Lost start");
 			_nextState = new LostState (_gameStateMachine);
+		}
+		if(Input.GetKeyDown("t")) {
+			Debug.Log ("Transmit");
+			_nextState = new TriggerTransmitState (_gameStateMachine);
 		}
 		if (Input.GetKeyDown ("r")) {
 			PersistentData.GameStarted = false;
