@@ -38,6 +38,7 @@ public class GameplayController : MonoBehaviour
 
     private void HandleMove(Vector2 destination)
     {
+		Debug.Log ("Move");
         GameStateMachine.State.PositionInSpacePressed(destination);
     }
 

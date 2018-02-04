@@ -14,12 +14,12 @@ public class ItemBehaviour : MonoBehaviour
     public AddOn AddOn;
     
     public GameplayController GameplayController;
-    public AstronautAudio AudioSource;
     public DriftBehaviour DriftBehaviour;
     public ItemState State = ItemState.Drifting;
     public float Velocity = 2.0f;
 
     public ColliderEventReporter ColliderEventReport;
+	public Collider2D ItemCollider;	
 
     public void Start()
     {

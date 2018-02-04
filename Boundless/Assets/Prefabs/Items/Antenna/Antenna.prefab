@@ -167,9 +167,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.026753727, y: 0.022449037}
   serializedVersion: 2
-  m_Radius: 0.89
+  m_Radius: 0.9947748
 --- !u!95 &95476481952326888
 Animator:
   serializedVersion: 3
@@ -239,11 +239,11 @@ MonoBehaviour:
   BaseItem: {fileID: 0}
   AddOn: {fileID: 114452968291902662}
   GameplayController: {fileID: 0}
-  AudioSource: {fileID: 0}
   DriftBehaviour: {fileID: 114258520090559428}
   State: 0
   Velocity: 2
   ColliderEventReport: {fileID: 114312086389002864}
+  ItemCollider: {fileID: 58397001152472136}
 --- !u!212 &212578184947249994
 SpriteRenderer:
   m_ObjectHideFlags: 1

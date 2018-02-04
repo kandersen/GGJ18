@@ -32,7 +32,11 @@ public class AstronautBehaviour : MonoBehaviour
 
     public ItemBehaviour PickUpItem(ItemBehaviour item)
     {
-        ItemBehaviour result = null;	
+        ItemBehaviour result = null;
+		if(item.BaseItem != null && item.BaseItem.CheckCompletion() == BaseItem.CombinationResult.NotDone)
+			item.ItemCollider.enabled = false;
+		
+		Debug.Log ("Item collider disabled " + item.BaseItem + ",");
         switch (Items.Count)
         {
             case 0:
@@ -51,10 +55,11 @@ public class AstronautBehaviour : MonoBehaviour
                 item.DriftBehaviour.enabled = false;
                 item.State = ItemBehaviour.ItemState.Held;
                 break;
-            default:
-                result = Items.Pop();
-                result.transform.parent = null;					
-                result.State = ItemBehaviour.ItemState.Dropped;
+			default:
+				result = Items.Pop ();
+				result.transform.parent = null;					
+				result.State = ItemBehaviour.ItemState.Dropped;
+				result.ItemCollider.enabled = true;	
                 Items.Push(item);
                 item.transform.parent = RightHand.transform;
                 item.transform.localPosition = Vector3.zero;
@@ -89,6 +94,10 @@ public class AstronautBehaviour : MonoBehaviour
             Debug.Log(status);
 			if (status != BaseItem.CombinationResult.NotDone) {
 				result.BaseItem.StartFlashing ();
+				result.BaseItem.first.ItemCollider.enabled = true;
+				result.BaseItem.second.ItemCollider.enabled = true;
+				result.ItemCollider.enabled = true;
+				Debug.Log ("Colliders enabled");
 				StartCoroutine (TransmitterReadySoundDelayed ());
 			}
             PickUpItem(result);

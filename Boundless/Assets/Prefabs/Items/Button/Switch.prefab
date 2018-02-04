@@ -216,11 +216,11 @@ MonoBehaviour:
   BaseItem: {fileID: 0}
   AddOn: {fileID: 114255186476492852}
   GameplayController: {fileID: 0}
-  AudioSource: {fileID: 0}
   DriftBehaviour: {fileID: 114396410809315968}
   State: 0
   Velocity: 2
   ColliderEventReport: {fileID: 114327347598789536}
+  ItemCollider: {fileID: 58207135382011024}
 --- !u!114 &114327347598789536
 MonoBehaviour:
   m_ObjectHideFlags: 1

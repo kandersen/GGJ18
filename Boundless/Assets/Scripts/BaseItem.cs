@@ -72,6 +72,8 @@ public class BaseItem : MonoBehaviour
 		}
 		yield return FlashRenderer.DOFade (0, 0.1f).WaitForCompletion();
 		FlashRenderer.enabled = false;
+		first.AddOn.FlashRenderer.enabled = false;
+		second.AddOn.FlashRenderer.enabled = false;
 	}
 
     public void Attach(ItemBehaviour item)
