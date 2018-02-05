@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -39,45 +38,45 @@ public class TriggerTransmitState : GameState
 	{
 		_moveCoroutine = _gameStateMachine.StartCoroutine (MoveAstronaut ());
 		_gameStateMachine.AstroAnimation.enabled = false;
-		AstronautBehaviour astronaut = _gameStateMachine.Astronaut;
+		var astronaut = _gameStateMachine.Astronaut;
 		if (astronaut.Items.Count > 1) {
-			ItemBehaviour result = astronaut.Items.Pop ();
-			result.transform.parent = null;					
-			result.State = ItemBehaviour.ItemState.Dropped;
+			var item = astronaut.Items.Pop ();
+			item.transform.parent = null;					
+			item.State = ItemBehaviour.ItemState.Dropped;
 		}
 		if (result == BaseItem.CombinationResult.Dud) {
 
 			yield return new WaitForSeconds (0.2f);
-			for (int i = 0; i < 3; i++) {
+			for (var i = 0; i < 3; i++) {
 				yield return _gameStateMachine.Astronaut.LeftArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, 7),0.1f).WaitForCompletion ();
 				yield return _gameStateMachine.Astronaut.LeftArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, -7),0.1f).WaitForCompletion ();
 			}
 			yield return new WaitForSeconds (0.5f);
-			for (int i = 0; i < 3; i++) {
+			for (var i = 0; i < 3; i++) {
 				yield return _gameStateMachine.Astronaut.LeftArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, 7),0.1f).WaitForCompletion ();
 				yield return _gameStateMachine.Astronaut.LeftArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, -7),0.1f).WaitForCompletion ();
 			}
 			yield return new WaitForSeconds (0.3f);
-			ItemBehaviour result = astronaut.Items.Pop ();
-			result.transform.parent = null;					
-			result.State = ItemBehaviour.ItemState.Dropped;
+			var item = astronaut.Items.Pop ();
+			item.transform.parent = null;					
+			item.State = ItemBehaviour.ItemState.Dropped;
 
 		} else {
 			astronaut.RightArmRenderer.flipX = false;
 			if (result == BaseItem.CombinationResult.Switchable) {
 				yield return new WaitForSeconds (0.3f);
-				for (int i = 0; i < 2; i++) {
+				for (var i = 0; i < 2; i++) {
 					_gameStateMachine.AudioController.PlayFlickSwitch ();
 					yield return _gameStateMachine.Astronaut.RightArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, 7),0.2f).WaitForCompletion ();
 					yield return _gameStateMachine.Astronaut.RightArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, -7),0.2f).WaitForCompletion ();
 				}
 				yield return new WaitForSeconds (0.3f);
-				for (int i = 0; i < 3; i++) {
+				for (var i = 0; i < 3; i++) {
 					yield return _gameStateMachine.Astronaut.LeftArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, 7),0.15f).WaitForCompletion ();
 					yield return _gameStateMachine.Astronaut.LeftArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, -7),0.15f).WaitForCompletion ();
 				}
 				yield return new WaitForSeconds (0.3f);
-				for (int i = 0; i < 2; i++) {
+				for (var i = 0; i < 2; i++) {
 					_gameStateMachine.AudioController.PlayFlickSwitch ();
 					yield return _gameStateMachine.Astronaut.RightArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, 7),0.2f).WaitForCompletion ();
 					yield return _gameStateMachine.Astronaut.RightArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, -7),0.2f).WaitForCompletion ();
@@ -85,9 +84,9 @@ public class TriggerTransmitState : GameState
 				yield return new WaitForSeconds (0.3f);
 				astronaut.RightArmRenderer.flipX = true;
 
-				ItemBehaviour result = astronaut.Items.Pop ();
-				result.transform.parent = null;					
-				result.State = ItemBehaviour.ItemState.Dropped;
+				var item = astronaut.Items.Pop ();
+				item.transform.parent = null;					
+				item.State = ItemBehaviour.ItemState.Dropped;
 			} else if (result == BaseItem.CombinationResult.Success) {
 				yield return new WaitForSeconds (0.3f);
 				_gameStateMachine.AudioController.PlayFlickSwitch ();
@@ -120,38 +119,9 @@ public class TriggerTransmitState : GameState
 		_gameStateMachine.StopCoroutine (_moveCoroutine);
 	}
 
-	public override void AlienReachedBottom()
-	{
-
-	}
-
-	public override void ItemClicked(ItemBehaviour item)
-	{
-
-	}
-
-	public override void ItemDriftedOff(ItemBehaviour item)
-	{        
-	}
-
 	public override void BottomScreenPressed()
 	{
 		nextState = new TransitionToNextStageState (_gameStateMachine);
-	}
-
-	public override void PositionInSpacePressed(Vector2 pos)
-	{
-
-	}
-
-	public override void AstronautActivated()
-	{
-		
-	}
-
-	public override void TransmitterReady()
-	{
-
 	}
 
 }
