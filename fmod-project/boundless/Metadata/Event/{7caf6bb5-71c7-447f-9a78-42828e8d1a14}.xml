@@ -8,7 +8,7 @@
             <value>1</value>
         </property>
         <relationship name="folder">
-            <destination>{d9b947b4-1742-4fcd-8556-2a13cb2667d8}</destination>
+            <destination>{031dcde3-297f-40bd-bac9-552f31346f3a}</destination>
         </relationship>
         <relationship name="mixer">
             <destination>{077e8abc-c5d3-41b6-a325-b44257320f50}</destination>
@@ -53,7 +53,7 @@
             <destination>{894d7ab5-6fbe-4c95-932b-78517b1ae6be}</destination>
         </relationship>
         <relationship name="output">
-            <destination>{717b009a-eca9-416b-8f0a-093ea13ea5ed}</destination>
+            <destination>{04741962-5e5d-49ec-a86e-74054141ba57}</destination>
         </relationship>
     </object>
     <object class="EventAutomatableProperties" id="{a7df41da-5534-436b-b7b0-86323f2d0149}"/>
@@ -75,6 +75,9 @@
         </relationship>
     </object>
     <object class="EventMixerMaster" id="{ec8ee9be-5f79-4ad7-97dd-28c56f9c74e0}">
+        <relationship name="modulators">
+            <destination>{cb028bd8-d620-4e48-9040-ede5551742bc}</destination>
+        </relationship>
         <relationship name="effectChain">
             <destination>{b32efc9a-8448-40bd-a86a-ae58172b8f98}</destination>
         </relationship>
@@ -126,6 +129,20 @@
         <relationship name="markerTrack">
             <destination>{792f6222-8b63-4129-89cf-f1da2d0b2155}</destination>
         </relationship>
+    </object>
+    <object class="ADSRModulator" id="{cb028bd8-d620-4e48-9040-ede5551742bc}">
+        <property name="nameOfPropertyBeingModulated">
+            <value>volume</value>
+        </property>
+        <property name="initialValue">
+            <value>-80</value>
+        </property>
+        <property name="attackTime">
+            <value>0</value>
+        </property>
+        <property name="releaseTime">
+            <value>2600</value>
+        </property>
     </object>
     <object class="MixerBusEffectChain" id="{b32efc9a-8448-40bd-a86a-ae58172b8f98}">
         <relationship name="effects">

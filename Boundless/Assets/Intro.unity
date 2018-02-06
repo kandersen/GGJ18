@@ -989,8 +989,8 @@ MonoBehaviour:
   AstronautRB2D: {fileID: 642171298}
   Background: {fileID: 405485718}
   Cer: {fileID: 1754150751}
-  PlayIntroMusicEvent: event:/IntroMusic
-  ExplosionSoundEvent: event:/Explosion
+  PlayIntroMusicEvent: event:/Soundtrack/IntroMusic
+  ExplosionSoundEvent: event:/SFX/Explosion
 --- !u!58 &1467695229
 CircleCollider2D:
   m_ObjectHideFlags: 0
