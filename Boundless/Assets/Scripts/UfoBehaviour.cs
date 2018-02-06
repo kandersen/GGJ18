@@ -115,11 +115,9 @@ public class UfoBehaviour : MonoBehaviour {
         }
         yield return new WaitForSeconds (1);
 
-//		DOTween.To(() => AudioSource.volume, v => AudioSource.volume = v, 0f, 2.8f);
+        _introMusicEmitter.stop(STOP_MODE.ALLOWFADEOUT);
 		
         yield return DOTween.ToAlpha (() => UfoWhiteRenderer.color, x => UfoWhiteRenderer.color = x, 1, 2.8f).SetEase(Ease.InQuart).WaitForCompletion();
-
-//		AudioSource.Stop();
 
         yield return new WaitForSeconds (0.2f);
 
