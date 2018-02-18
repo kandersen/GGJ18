@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18099f060c6547a683e37d60ca1eb970, type: 3}
+  m_Name: ManagerLocatorPrefabs
+  m_EditorClassIdentifier: 
+  SoundManager: {fileID: 114442631135957158, guid: 6a8cdb033e8bb45038402430bd9fdf89,
+    type: 2}
+  PersistentDataManager: {fileID: 114490665133358780, guid: cfc2a8a7699614f51b3f42e64944a760,
+    type: 2}

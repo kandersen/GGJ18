@@ -55,8 +55,8 @@ public class WinState : GameState
 //		_gameStateMachine.StartCoroutine (DropItem ());
 
 		yield return nautStartTrans.DOMove (new Vector2(nautStartTrans.position.x,10f),4f).WaitForCompletion();
-
-		PersistentData.GameStarted = true;
+	   
+		_gameStateMachine.PersistentDataManager.GameStarted = true;
 		SceneManager.LoadSceneAsync ("Intro");
     }
 }

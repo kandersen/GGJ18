@@ -2,15 +2,9 @@
 using UnityEngine;
 using DG.Tweening;
 
-using UnityEngine.SceneManagement;
-
 public class LostState : GameState
 {
 	public LostState(GameStateMachine gameStateMachine) : base(gameStateMachine)
-	{
-	}
-
-	public override void UpdateState()
 	{
 	}
 
@@ -37,9 +31,6 @@ public class LostState : GameState
 		Debug.Log ("Lost");
 		StopDebris ();
 		var nautStartTrans = _gameStateMachine.Astronaut.transform;
-
-		//tween nautStartTrans to 
-//		var startPosition = _gameStateMachine.AstronautStartPosition;
 
 		_gameStateMachine.StartCoroutine(LostMusicTransition());
 
@@ -104,33 +95,5 @@ public class LostState : GameState
 		yield return DOTween.ToAlpha (() => text.color, x => text.color = x, 0, 5f).WaitForCompletion ();
 
 
-	}
-
-	public override void ExitState()
-	{
-	}
-
-	public override void AlienReachedBottom()
-	{
-	}
-
-	public override void ItemClicked(ItemBehaviour item)
-	{
-	}
-
-	public override void ItemDriftedOff(ItemBehaviour item)
-	{
-	}
-
-	public override void BottomScreenPressed()
-	{
-	}
-
-	public override void PositionInSpacePressed(Vector2 pos)
-	{
-	}
-
-	public override void AstronautActivated()
-	{
 	}
 }

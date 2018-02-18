@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameStateMachine : MonoBehaviour
 {
+	public PersistentDataManager PersistentDataManager;
+	
     public AstronautBehaviour Astronaut;
     public BackgroundBehaviour BackgroundBehaviour;
     public Transform AstronautStartPosition;
@@ -38,6 +40,7 @@ public class GameStateMachine : MonoBehaviour
 
     public void Start()
     {
+	    PersistentDataManager = FindObjectOfType<PersistentDataManager>();
         RoundsToGo = 7;
         State = new GameplayIntroState(this);        
         State.EnterState();        

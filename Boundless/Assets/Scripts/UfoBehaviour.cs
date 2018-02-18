@@ -2,11 +2,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using FMOD;
 using FMOD.Studio;
 using FMODUnity;
+using Debug = UnityEngine.Debug;
 
-public class UfoBehaviour : MonoBehaviour {
-
+public class UfoBehaviour : MonoBehaviour
+{
+    public PersistentDataManager PersistentDataManager;
+    public SoundManager SoundManager;
+    
     public SpriteRenderer BoomRenderer;
     public SpriteRenderer UfoNormalRenderer;
     public SpriteRenderer UfoWhiteRenderer;
@@ -33,16 +38,16 @@ public class UfoBehaviour : MonoBehaviour {
     [EventRef]
     public string ExplosionSoundEvent;
     
-    private EventInstance _introMusicEmitter;
-	
     // Use this for initialization
-    void Start ()
+    public void Start ()
     {
-        _introMusicEmitter = RuntimeManager.CreateInstance(PlayIntroMusicEvent);
-        _introMusicEmitter.start();
+        PersistentDataManager = FindObjectOfType<PersistentDataManager>();
+        SoundManager = FindObjectOfType<SoundManager>();
+
+        SoundManager.StartEvent(PlayIntroMusicEvent);
 		
-        Debug.Log ("Game started: " + PersistentData.GameStarted);
-        if (PersistentData.GameStarted) {
+        Debug.Log ("Game started: " + PersistentDataManager.GameStarted);
+        if (PersistentDataManager.GameStarted) {
             BoundlessRenderer.enabled = false;
         } else {
             BeamLineRenderer.color = new Color (1, 1, 1, 0);
@@ -65,15 +70,13 @@ public class UfoBehaviour : MonoBehaviour {
     }
 
     void Update() {
-        if (PersistentData.GameStarted && _beam == null && _scene == null) {
+        if (PersistentDataManager.GameStarted && _beam == null && _scene == null) {
             _beam = StartCoroutine (PlayBeam ());
         }
     }
 
 
-    IEnumerator PlayBeam() {
-		
-
+    public IEnumerator PlayBeam() {		
         BeamLineRenderer.color = new Color (1, 1, 1, 1);
         BeamRenderer.color = new Color (1, 1, 1, 0.5f);
 
@@ -110,13 +113,12 @@ public class UfoBehaviour : MonoBehaviour {
     }
 
     private IEnumerator AndAction() {
-        if (!PersistentData.GameStarted) {
+        if (!PersistentDataManager.GameStarted) {
             yield return DOTween.ToAlpha (() => BoundlessRenderer.color, x => BoundlessRenderer.color = x, 0, 2f);
         }
         yield return new WaitForSeconds (1);
 
-        _introMusicEmitter.stop(STOP_MODE.ALLOWFADEOUT);
-        _introMusicEmitter.release();
+        SoundManager.FadeEvent(PlayIntroMusicEvent);
          
         yield return DOTween.ToAlpha (() => UfoWhiteRenderer.color, x => UfoWhiteRenderer.color = x, 1, 2.8f).SetEase(Ease.InQuart).WaitForCompletion();
         
@@ -127,7 +129,7 @@ public class UfoBehaviour : MonoBehaviour {
         BoomRenderer.gameObject.transform.position = UfoWhiteRenderer.gameObject.transform.position;
         BoomRenderer.enabled = true;
 
-        RuntimeManager.PlayOneShot(ExplosionSoundEvent);
+        SoundManager.PlayOneShot(ExplosionSoundEvent);
 
         yield return DOTween.To (() => Background.speed, x => Background.speed = x, 0, 0.5f).WaitForCompletion();
 
@@ -143,8 +145,7 @@ public class UfoBehaviour : MonoBehaviour {
 
     private IEnumerator End() {
         yield return DOTween.ToAlpha (() => BlackRenderer.material.color, x => BlackRenderer.material.color = x,1,0.5f).WaitForCompletion();
-
-        PersistentData.GameStarted = true;
+        PersistentDataManager.GameStarted = true;
         SceneManager.LoadSceneAsync ("Main");
     }
 

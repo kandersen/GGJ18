@@ -72,7 +72,7 @@ public class FreeFallingState : GameState
 			_nextState = new TriggerTransmitState (_gameStateMachine);
 		}
 		if (Input.GetKeyDown ("r")) {
-			PersistentData.GameStarted = false;
+			_gameStateMachine.PersistentDataManager.GameStarted = false;
 			SceneManager.LoadSceneAsync ("Intro");
 		}
     }
