@@ -116,9 +116,10 @@ public class UfoBehaviour : MonoBehaviour {
         yield return new WaitForSeconds (1);
 
         _introMusicEmitter.stop(STOP_MODE.ALLOWFADEOUT);
-		
+        _introMusicEmitter.release();
+         
         yield return DOTween.ToAlpha (() => UfoWhiteRenderer.color, x => UfoWhiteRenderer.color = x, 1, 2.8f).SetEase(Ease.InQuart).WaitForCompletion();
-
+        
         yield return new WaitForSeconds (0.2f);
 
         UfoNormalRenderer.enabled = false;
