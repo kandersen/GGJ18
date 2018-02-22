@@ -20,6 +20,8 @@ public class AudioController : MonoBehaviour {
 	public string TransmitSound;
 	[EventRef]
 	public string TransmitterReadySound;
+	[EventRef]
+	public string JetPackSound;
 
 	// Soundtrack
 	[EventRef]
@@ -27,10 +29,9 @@ public class AudioController : MonoBehaviour {
 	[EventRef]
 	public string SereneMusic;
 
-	public JetpackSound JetPackSound;
-
 	private EventInstance _backgroundMusicEmitter;
 	private EventInstance _sereneMusicEmitter;
+	private EventInstance _jetpackSoundEmitter;
 
 	void Start(){
 		_backgroundMusicEmitter = RuntimeManager.CreateInstance(BackgroundMusic);
@@ -49,11 +50,13 @@ public class AudioController : MonoBehaviour {
 	}
 
 	public void PlayJetPackSound() {
-		JetPackSound.Play ();
+		_jetpackSoundEmitter = RuntimeManager.CreateInstance(JetPackSound);
+		_jetpackSoundEmitter.start();
 	}
 
 	public void StopJetPackSound() {
-		JetPackSound.Stop ();
+		_jetpackSoundEmitter.stop(STOP_MODE.ALLOWFADEOUT);
+		_jetpackSoundEmitter.release();
 	}
 
 	public void PlayPickupBattery()
