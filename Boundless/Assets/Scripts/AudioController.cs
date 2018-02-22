@@ -1,31 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 using DG.Tweening;
 
 public class AudioController : MonoBehaviour {
 
-	public AudioClip PickupBatterySound;
-	public AudioClip FlickSwitchSound;
-	public AudioClip CombineSuccessSound;
-	public AudioClip CombineFailureSound;
-	public AudioClip TransmitSound;
-	public AudioClip TransmitterReadySound;
+	// SFX
+	[EventRef]
+	public string PickupBatterySound;
+	[EventRef]
+	public string FlickSwitchSound;
+	[EventRef]
+	public string CombineSuccessSound;
+	[EventRef]
+	public string CombineFailureSound;
+	[EventRef]
+	public string TransmitSound;
+	[EventRef]
+	public string TransmitterReadySound;
 
-	public AudioSource BackgroundMusic;
-	public AudioSource BackgroundMusicv2;
-	public AudioSource SereneMusic;
+	// Soundtrack
+	[EventRef]
+	public string BackgroundMusic;
+	[EventRef]
+	public string SereneMusic;
 
 	public JetpackSound JetPackSound;
 
-	public AudioSource AudioSource;
+	private EventInstance _backgroundMusicEmitter;
+	private EventInstance _sereneMusicEmitter;
 
-	public void PlayTheme() {
-		SereneMusic.Play ();
+	void Start(){
+		_backgroundMusicEmitter = RuntimeManager.CreateInstance(BackgroundMusic);
+		_sereneMusicEmitter = RuntimeManager.CreateInstance(SereneMusic);
+
+		_backgroundMusicEmitter.start();
 	}
 
-	public IEnumerator FadeBackgroundMusic(float fadeTime) {
-		yield return BackgroundMusicv2.DOFade (0, fadeTime).WaitForCompletion();
+	public void PlayTheme() {
+		_sereneMusicEmitter.start();
+	}
+
+	public void FadeBackgroundMusic() {
+		_backgroundMusicEmitter.stop(STOP_MODE.ALLOWFADEOUT);
+		_backgroundMusicEmitter.release();
 	}
 
 	public void PlayJetPackSound() {
@@ -38,29 +58,29 @@ public class AudioController : MonoBehaviour {
 
 	public void PlayPickupBattery()
 	{
-		AudioSource.PlayOneShot(PickupBatterySound);
+		RuntimeManager.PlayOneShot(PickupBatterySound);
 	}
 
 	public void PlayFlickSwitch()
 	{
-		AudioSource.PlayOneShot(FlickSwitchSound);
+		RuntimeManager.PlayOneShot(FlickSwitchSound);
 	}
 
 	public void PlayCombineSuccess()
 	{
-		AudioSource.PlayOneShot(CombineSuccessSound);
+		RuntimeManager.PlayOneShot(CombineSuccessSound);
 	}
 
 	public void PlayCombineFailure()
 	{
-		AudioSource.PlayOneShot(CombineFailureSound);
+		RuntimeManager.PlayOneShot(CombineFailureSound);
 	}
 
 	public void PlayTransmit() {
-		AudioSource.PlayOneShot (TransmitSound);
+		RuntimeManager.PlayOneShot (TransmitSound);
 	}
 
 	public void PlayTransmitterReady(){
-		AudioSource.PlayOneShot (TransmitterReadySound);
+		RuntimeManager.PlayOneShot (TransmitterReadySound);
 	}
 }
