@@ -41,7 +41,7 @@ public class WinState : GameState
         //tween nautStartTrans to 
 //        var startPosition = _gameStateMachine.AstronautStartPosition;
 
-		yield return _gameStateMachine.AudioController.FadeBackgroundMusic (3);
+		_gameStateMachine.AudioController.FadeBackgroundMusic();
 		yield return nautStartTrans.DOMove (Vector2.zero, 3).WaitForCompletion();
 
 		BeamBehaviour beam = GameObject.Instantiate (_gameStateMachine.Beam);
