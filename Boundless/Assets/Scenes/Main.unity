@@ -17616,86 +17616,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &233515704
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 233515702}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!114 &233515705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17707,98 +17627,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079c049d1752c39419ade255b2b32af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupBatterySound: {fileID: 8300000, guid: 40ec07b8a88034165ada9f216a2f76f4, type: 3}
-  FlickSwitchSound: {fileID: 8300000, guid: 6a3266deac03c4f17b66efaa048a46bc, type: 3}
-  CombineSuccessSound: {fileID: 8300000, guid: 58f163963d5904ca9810b782157b1ee7, type: 3}
-  CombineFailureSound: {fileID: 8300000, guid: c7fcb8c5fad724f7c8cc2eb221f5e53d, type: 3}
-  TransmitSound: {fileID: 8300000, guid: 7b017bd606889c3418337fcf7a860a34, type: 3}
-  TransmitterReadySound: {fileID: 8300000, guid: 9964622e5b426b74ab3dbf83f6c7de82,
-    type: 3}
-  BackgroundMusic: {fileID: 1288038482}
-  BackgroundMusicv2: {fileID: 1986965109}
-  SereneMusic: {fileID: 765974739}
-  JetPackSound: {fileID: 743136537}
-  AudioSource: {fileID: 233515704}
---- !u!82 &233515706
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 233515702}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  PickupBatterySound: event:/SFX/BatteryPickup
+  FlickSwitchSound: event:/SFX/Switch
+  CombineSuccessSound: event:/SFX/CombineSuccess
+  CombineFailureSound: event:/SFX/CombineFailure
+  TransmitSound: event:/SFX/Transmit
+  TransmitterReadySound: event:/SFX/TransmitterPickup
+  JetPackSound: event:/SFX/Jetpack
+  BackgroundMusic: event:/Soundtrack/Freefall
+  SereneMusic: event:/Soundtrack/IntroMusic
 --- !u!1 &304273560
 GameObject:
   m_ObjectHideFlags: 0
@@ -24745,8 +24582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefabs: {fileID: 11400000, guid: d2ab5a661e74342389c79ae46a478935, type: 2}
-  SoundManager: {fileID: 0}
-  PersistentDataManager: {fileID: 0}
 --- !u!4 &455845685
 Transform:
   m_ObjectHideFlags: 0
@@ -101415,7 +101250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2325d85aaa5b4034b30074a8239fae5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PersistentData: {fileID: 0}
+  PersistentDataManager: {fileID: 0}
   Astronaut: {fileID: 1166828374}
   BackgroundBehaviour: {fileID: 1945645935}
   AstronautStartPosition: {fileID: 54371031}
