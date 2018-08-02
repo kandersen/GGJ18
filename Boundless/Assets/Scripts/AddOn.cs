@@ -5,6 +5,7 @@ public class AddOn : MonoBehaviour
     public ItemBehaviour Item;
 	public BaseItem Base;
 	public SpriteRenderer FlashRenderer;
+	public Animator TransmitionAnimation;
 
 	public enum ItemClass
     {
@@ -17,6 +18,26 @@ public class AddOn : MonoBehaviour
 		if (FlashRenderer != null) {
 			FlashRenderer.enabled = false;
 		}
+	}
+
+	public void Transmit()
+	{
+		if (Class != ItemClass.Antenna) {
+			Debug.Log ("Not an antenna");
+			return;
+		}
+
+		TransmitionAnimation.SetBool ("transmit", true);
+	}
+		
+	public void TransmitStop()
+	{
+		if (Class != ItemClass.Antenna) {
+			Debug.Log ("Not an antenna");
+			return;
+		}
+
+		TransmitionAnimation.SetBool ("transmit", false);
 	}
 
     public ItemClass Class;

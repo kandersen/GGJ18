@@ -42,7 +42,7 @@ public class WinState : GameState
 //        var startPosition = _gameStateMachine.AstronautStartPosition;
 
 		_gameStateMachine.AudioController.FadeBackgroundMusic();
-		yield return nautStartTrans.DOMove (Vector2.zero, 3).WaitForCompletion();
+		yield return nautStartTrans.DOMove (Vector2.zero, 3.3f).WaitForCompletion();
 
 		BeamBehaviour beam = GameObject.Instantiate (_gameStateMachine.Beam);
 		beam.gameObject.transform.position = new Vector2 (nautStartTrans.position.x+0.5f, beam.gameObject.transform.position.y);
@@ -53,7 +53,7 @@ public class WinState : GameState
 		_gameStateMachine.StartCoroutine (FlashBeam(beam));
 
 //		_gameStateMachine.StartCoroutine (DropItem ());
-
+		yield return nautStartTrans.DOMove (new Vector2(nautStartTrans.position.x,nautStartTrans.position.y-0.75f),0.5f).WaitForCompletion();
 		yield return nautStartTrans.DOMove (new Vector2(nautStartTrans.position.x,10f),4f).WaitForCompletion();
 	   
 		_gameStateMachine.PersistentDataManager.GameStarted = true;

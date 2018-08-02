@@ -92,9 +92,11 @@ public class TriggerTransmitState : GameState
 				_gameStateMachine.AudioController.PlayFlickSwitch ();
 				yield return _gameStateMachine.Astronaut.RightArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, 7),0.2f).WaitForCompletion ();
 				yield return _gameStateMachine.Astronaut.RightArmRenderer.gameObject.transform.DOBlendableRotateBy (new Vector3 (0, 0, -7),0.2f).WaitForCompletion ();
+				_gameStateMachine.StartCoroutine (AntennaTransmit());
+				yield return new WaitForSeconds (0.15f);
+				_gameStateMachine.AudioController.PlayTransmit ();
 				yield return new WaitForSeconds (0.3f);
 				astronaut.RightArmRenderer.flipX = true;
-				_gameStateMachine.AudioController.PlayTransmit ();
 				//TODO add animation for transmission
 				nextState = new WinState (_gameStateMachine);
 			}
@@ -103,6 +105,14 @@ public class TriggerTransmitState : GameState
 		_gameStateMachine.AstroAnimation.enabled = true;
 		_nextState = nextState;
 		yield return null;
+	}
+
+	private IEnumerator AntennaTransmit() {
+		_gameStateMachine.Astronaut.GetLeftItem ().BaseItem.first.AddOn.Transmit ();
+		_gameStateMachine.Astronaut.GetLeftItem ().BaseItem.second.AddOn.Transmit ();
+		yield return new WaitForSeconds (3f);
+		_gameStateMachine.Astronaut.GetLeftItem ().BaseItem.first.AddOn.TransmitStop ();
+		_gameStateMachine.Astronaut.GetLeftItem ().BaseItem.second.AddOn.TransmitStop ();
 	}
 
 	private IEnumerator MoveAstronaut() {
