@@ -33,6 +33,10 @@ public abstract class GameState
     {
     }
 
+	public virtual void StopChase()
+	{
+	}
+
     public virtual void ItemClicked(ItemBehaviour item)
     {
     }

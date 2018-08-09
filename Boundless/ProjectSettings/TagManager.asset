@@ -55,6 +55,9 @@ TagManager:
   - name: Attachment
     uniqueID: 1968597043
     locked: 0
+  - name: Beam Layer
+    uniqueID: 2888660229
+    locked: 0
   - name: Debris Foreground
     uniqueID: 1874585513
     locked: 0

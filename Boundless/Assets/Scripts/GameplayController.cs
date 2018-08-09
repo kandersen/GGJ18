@@ -8,6 +8,7 @@ public class GameplayController : MonoBehaviour
     public Signal<ItemBehaviour> ItemDriftedOffScreenSignal = new Signal<ItemBehaviour>();
     public Signal ActivateAstronautSignal = new Signal();    
     public Signal TransmitterReadySignal = new Signal();
+	public Signal AstronautTopOfScreen = new Signal();
 
     public GameStateMachine GameStateMachine;
 
@@ -24,7 +25,12 @@ public class GameplayController : MonoBehaviour
         ItemDriftedOffScreenSignal.AddListener(HandleItemDriftedOffScreen);
         ActivateAstronautSignal.AddListener(HandleActivateAstronaut);
         TransmitterReadySignal.AddListener(HandleTransmitterReady);
+		AstronautTopOfScreen.AddListener(HandleAstronautDriftingOff);
     }
+
+	private void HandleAstronautDriftingOff() {
+		GameStateMachine.State.StopChase ();
+	}
 
     private void HandleActivateAstronaut()
     {
